@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Käsivarsi Cultural Center – Kilpisjärvi, Finland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --linen:    #F2EAD8;
+    --cream:    #FAF5EC;
+    --parchment:#E8DCC8;
+    --bark:     #5C4A32;
+    --ember:    #B85A28;
+    --ember-lt: #D4744A;
+    --frost:    #D6E4E8;
+    --deep:     #2A1E10;
+    --mid:      #4A3828;
+    --smoke:    #7A6E62;
+    --snow:     #FDF9F3;
+    --aurora:   #3A6A5E;
+    --sepia:    #8C6E50;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--mid);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 3rem;
+    background: rgba(250,245,236,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(92,74,50,0.1);
+  }
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--deep); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--smoke); text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--ember); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; height: 100vh; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1800&q=80') center/cover no-repeat;
+    filter: brightness(0.55) saturate(0.65) sepia(0.2);
+    transform: scale(1.05);
+    animation: slow-zoom 22s ease-out forwards;
+  }
+  @keyframes slow-zoom { to { transform: scale(1); } }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(42,30,16,0.15) 0%, rgba(42,30,16,0.55) 80%, var(--cream) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 0 2rem;
+    animation: fadeUp 1.4s ease-out both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.45em; text-transform: uppercase;
+    color: var(--parchment); margin-bottom: 1.5rem;
+    animation: fadeUp 1.4s 0.2s ease-out both;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 300; line-height: 0.95;
+    color: var(--snow); letter-spacing: -0.01em;
+    animation: fadeUp 1.4s 0.35s ease-out both;
+  }
+  .hero-title em { font-style: italic; color: var(--parchment); }
+  .hero-sub {
+    margin-top: 1.5rem;
+    font-size: 0.72rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(242,234,216,0.7);
+    animation: fadeUp 1.4s 0.5s ease-out both;
+  }
+  .hero-tagline {
+    margin-top: 2rem; max-width: 520px; margin-left: auto; margin-right: auto;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 1.25rem; color: var(--parchment); opacity: 0.9; line-height: 1.65;
+    animation: fadeUp 1.4s 0.65s ease-out both;
+  }
+  .hero-badge {
+    display: inline-block; margin-top: 2.5rem;
+    border: 1px solid rgba(242,234,216,0.5); color: var(--parchment);
+    font-size: 0.63rem; letter-spacing: 0.3em; text-transform: uppercase;
+    padding: 0.6rem 1.6rem;
+    animation: fadeUp 1.4s 0.8s ease-out both;
+  }
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--parchment); animation: pulse 2.5s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:0.25} 50%{opacity:0.6} }
+  .scroll-hint span { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; }
+  .scroll-hint svg { width: 16px; }
+
+  /* ── INTRO ── */
+  .section-intro {
+    padding: 8rem 3rem 6rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    max-width: 1200px; margin: 0 auto; align-items: center;
+    background: var(--cream);
+  }
+  .section-label {
+    font-size: 0.62rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--ember); margin-bottom: 1.2rem; display: block;
+  }
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.15; color: var(--deep);
+  }
+  .section-heading em { font-style: italic; color: var(--ember); }
+  .section-body {
+    font-size: 0.95rem; line-height: 1.9; color: var(--smoke);
+    margin-top: 1.4rem;
+  }
+  .divider {
+    width: 50px; height: 1px; background: var(--ember); margin: 1.8rem 0;
+  }
+  .intro-visual { position: relative; }
+  .intro-img {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover;
+    filter: sepia(0.25) brightness(0.9);
+  }
+  .intro-accent {
+    position: absolute; bottom: -2rem; left: -2rem;
+    width: 110px; height: 110px;
+    border: 1px solid var(--ember); opacity: 0.35; pointer-events: none;
+  }
+  .intro-caption {
+    position: absolute; bottom: 1rem; right: -1rem;
+    writing-mode: vertical-rl;
+    font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--smoke); opacity: 0.6;
+  }
+
+  /* ── CULTURAL QUOTE BAND ── */
+  .quote-band {
+    background: var(--bark);
+    padding: 5rem 3rem;
+    text-align: center;
+  }
+  .quote-band blockquote {
+    max-width: 780px; margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 300; font-style: italic;
+    color: var(--linen); line-height: 1.55;
+  }
+  .quote-band cite {
+    display: block; margin-top: 1.5rem;
+    font-family: 'Raleway', sans-serif; font-style: normal;
+    font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--parchment); opacity: 0.55;
+  }
+
+  /* ── GALLERY ── */
+  .section-gallery {
+    background: var(--linen);
+    padding: 7rem 3rem;
+  }
+  .gallery-header {
+    max-width: 1200px; margin: 0 auto 4rem;
+  }
+  .gallery-intro {
+    max-width: 560px;
+  }
+  .gallery-intro .section-body { color: var(--smoke); }
+
+  /* Film-strip gallery */
+  .gallery-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto auto;
+    gap: 6px;
+  }
+  .gallery-item {
+    position: relative; overflow: hidden;
+    background: var(--sepia);
+    cursor: pointer;
+  }
+  .gallery-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+  .gallery-item:nth-child(2) { grid-column: span 4; }
+  .gallery-item:nth-child(3) { grid-column: span 3; }
+  .gallery-item:nth-child(4) { grid-column: span 3; }
+  .gallery-item:nth-child(5) { grid-column: span 4; }
+
+  .gallery-item img {
+    width: 100%; height: 100%; min-height: 220px;
+    object-fit: cover; display: block;
+    filter: sepia(0.55) contrast(0.9) brightness(0.88);
+    transition: filter 0.6s ease, transform 0.7s ease;
+  }
+  .gallery-item:nth-child(1) img { min-height: 460px; }
+  .gallery-item:hover img {
+    filter: sepia(0.3) contrast(0.95) brightness(0.95);
+    transform: scale(1.03);
+  }
+
+  /* Aged border / vignette */
+  .gallery-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 40px rgba(92,74,50,0.35);
+    pointer-events: none;
+  }
+
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 1.2rem 1rem 0.8rem;
+    background: linear-gradient(to top, rgba(42,30,16,0.8) 0%, transparent 100%);
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--parchment); opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .gallery-item:hover .gallery-caption { opacity: 1; }
+
+  .gallery-note {
+    max-width: 1200px; margin: 2.5rem auto 0;
+    font-size: 0.72rem; color: var(--smoke); font-style: italic;
+    border-left: 2px solid var(--ember); padding-left: 1rem;
+    line-height: 1.7;
+  }
+
+  /* ── STRUCTURES ── */
+  .section-structures {
+    background: var(--snow);
+    padding: 7rem 3rem;
+    border-top: 1px solid rgba(92,74,50,0.12);
+  }
+  .structures-header {
+    max-width: 1200px; margin: 0 auto 5rem;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .avail-note {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--aurora); border: 1px solid var(--aurora);
+    padding: 0.5rem 1.2rem; white-space: nowrap;
+  }
+  .structures-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px;
+  }
+  .structure-card {
+    position: relative; overflow: hidden;
+    aspect-ratio: 4/3; cursor: pointer;
+    background: var(--bark);
+  }
+  .structure-card.wide { grid-column: span 2; aspect-ratio: 16/7; }
+  .structure-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s ease, filter 0.5s ease;
+    filter: brightness(0.75) saturate(0.7) sepia(0.1);
+  }
+  .structure-card:hover img { transform: scale(1.04); filter: brightness(0.6) saturate(0.75); }
+  .card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(42,30,16,0.88) 0%, transparent 55%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 2rem;
+  }
+  .card-number { font-family: 'Cormorant Garamond', serif; font-size: 0.78rem; color: var(--ember-lt); letter-spacing: 0.2em; margin-bottom: 0.3rem; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--snow); line-height: 1.1; }
+  .card-sub { font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--parchment); margin-top: 0.3rem; opacity: 0.7; }
+  .card-desc { font-size: 0.82rem; line-height: 1.65; color: var(--parchment); margin-top: 0.7rem; max-width: 420px; opacity: 0.85; }
+
+  /* ── COMING SOON ── */
+  .section-coming {
+    padding: 7rem 3rem;
+    background: var(--deep);
+    position: relative; overflow: hidden;
+  }
+  .section-coming::before {
+    content: 'PHASE 2';
+    position: absolute; right: -3rem; top: 50%; transform: translateY(-50%) rotate(90deg);
+    font-family: 'Cinzel', serif; font-size: 8rem; font-weight: 600;
+    color: var(--bark); opacity: 0.18; letter-spacing: 0.3em; pointer-events: none;
+  }
+  .coming-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+  }
+  .coming-inner .section-heading { color: var(--snow); }
+  .coming-inner .section-label { color: var(--ember-lt); }
+  .coming-inner .section-body { color: rgba(232,220,200,0.65); }
+  .feature-list {
+    list-style: none; margin-top: 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .feature-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    font-size: 0.9rem; color: rgba(232,220,200,0.6); line-height: 1.5;
+  }
+  .feature-list li::before { content: '—'; color: var(--ember); flex-shrink: 0; margin-top: 1px; }
+  .coming-visual { position: relative; }
+  .coming-visual img {
+    width: 100%; aspect-ratio: 4/5; object-fit: cover;
+    filter: sepia(0.35) brightness(0.55);
+  }
+  .coming-badge {
+    position: absolute; top: 1.5rem; left: 1.5rem;
+    background: var(--ember); color: white;
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    padding: 0.4rem 1rem;
+  }
+
+  /* ── TOUR ── */
+  .section-tour {
+    background: var(--parchment); padding: 6rem 3rem;
+    border-top: 1px solid rgba(92,74,50,0.15);
+  }
+  .tour-inner {
+    max-width: 900px; margin: 0 auto; text-align: center;
+  }
+  .tour-inner .section-label { color: var(--ember); }
+  .tour-inner .section-heading { color: var(--deep); }
+  .tour-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+    margin-top: 4rem;
+  }
+  .tour-item {
+    border-top: 1px solid rgba(92,74,50,0.25);
+    padding-top: 1.5rem; text-align: left;
+  }
+  .tour-item-label {
+    font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--smoke); margin-bottom: 0.5rem;
+  }
+  .tour-item-value {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.65rem;
+    color: var(--deep); font-weight: 300;
+  }
+  .tour-item-note { font-size: 0.72rem; color: var(--smoke); margin-top: 0.3rem; }
+
+  /* ── EU SUPPORT ── */
+  .section-eu {
+    background: var(--cream);
+    border-top: 1px solid rgba(92,74,50,0.12);
+    padding: 3.5rem 3rem;
+  }
+  .eu-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; align-items: center; gap: 3rem;
+    flex-wrap: wrap;
+  }
+  /* EU flag SVG stars circle */
+  .eu-emblem {
+    flex-shrink: 0;
+    width: 72px; height: 72px;
+    background: #003399;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .eu-emblem svg { width: 52px; height: 52px; }
+  .eu-text { flex: 1; min-width: 260px; }
+  .eu-text .section-label { color: var(--ember); margin-bottom: 0.6rem; }
+  .eu-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; color: var(--deep);
+    margin-bottom: 0.6rem;
+  }
+  .eu-body {
+    font-size: 0.82rem; line-height: 1.75; color: var(--smoke);
+  }
+  .eu-logos {
+    display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;
+  }
+  .eu-logo-pill {
+    border: 1px solid rgba(92,74,50,0.2);
+    padding: 0.5rem 1.1rem;
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--smoke); white-space: nowrap;
+  }
+
+  /* ── CONTACT ── */
+  .section-contact {
+    padding: 7rem 3rem;
+    background: var(--snow);
+    border-top: 1px solid rgba(92,74,50,0.12);
+  }
+  .contact-inner {
+    max-width: 700px; margin: 0 auto; text-align: center;
+  }
+  .contact-inner .section-heading { color: var(--deep); margin-bottom: 0.5rem; }
+  .contact-inner .section-body { color: var(--smoke); margin-bottom: 3rem; }
+  .logo-mark {
+    width: 52px; height: 52px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1.5px solid var(--ember); border-radius: 50%;
+    margin-bottom: 1.5rem;
+  }
+  .logo-mark svg { width: 26px; height: 26px; }
+  .contact-form {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    text-align: left;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: span 2; }
+  .form-group label {
+    font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--smoke);
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: transparent;
+    border: none; border-bottom: 1px solid rgba(92,74,50,0.3);
+    color: var(--mid); font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem; padding: 0.7rem 0;
+    outline: none; transition: border-color 0.3s; width: 100%;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--smoke); opacity: 0.5; }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--ember); }
+  .form-group textarea { resize: none; height: 100px; }
+  .btn-submit {
+    grid-column: span 2; margin-top: 1rem;
+    background: var(--ember); color: white;
+    border: none; cursor: pointer;
+    font-family: 'Raleway', sans-serif; font-weight: 500;
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    transition: background 0.3s;
+  }
+  .btn-submit:hover { background: #963e16; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep); padding: 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.2em; color: var(--parchment); opacity: 0.6; }
+  .footer-meta { font-size: 0.62rem; color: rgba(232,220,200,0.25); letter-spacing: 0.15em; }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--parchment); text-decoration: none; opacity: 0.4;
+    transition: opacity 0.3s;
+  }
+  .footer-links a:hover { opacity: 0.9; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .gallery-item:nth-child(1) { grid-column: span 12; grid-row: span 1; }
+    .gallery-item:nth-child(1) img { min-height: 280px; }
+    .gallery-item:nth-child(2) { grid-column: span 6; }
+    .gallery-item:nth-child(3) { grid-column: span 6; }
+    .gallery-item:nth-child(4) { grid-column: span 6; }
+    .gallery-item:nth-child(5) { grid-column: span 6; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .section-intro { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 1.5rem 3rem; }
+    .structures-grid { grid-template-columns: 1fr; }
+    .structure-card.wide { grid-column: span 1; aspect-ratio: 4/3; }
+    .coming-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .tour-grid { grid-template-columns: 1fr; }
+    .contact-form { grid-template-columns: 1fr; }
+    .form-group.full, .btn-submit { grid-column: span 1; }
+    .section-structures, .section-tour, .section-contact,
+    .section-coming, .section-gallery { padding: 4rem 1.5rem; }
+    .structures-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    footer { flex-direction: column; align-items: flex-start; padding: 2rem 1.5rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: unset; }
+    .gallery-item, .gallery-item:nth-child(1),
+    .gallery-item:nth-child(2), .gallery-item:nth-child(3),
+    .gallery-item:nth-child(4), .gallery-item:nth-child(5) { grid-column: span 1; }
+    .eu-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Käsivarsi</a>
+  <ul class="nav-links">
+    <li><a href="#about">Heritage</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#structures">Structures</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Kilpisjärvi · Finland · Enontekiö · 69°N</div>
+    <h1 class="hero-title">Käsivarsi<br><em>Cultural Center</em></h1>
+    <p class="hero-sub">Sámi Heritage · Eanodat Region</p>
+    <p class="hero-tagline">A living encounter with one of the world's oldest indigenous cultures, rooted in the land and memory of the North.</p>
+    <span class="hero-badge">Opening Autumn 2026</span>
+  </div>
+  <div class="scroll-hint">
+    <svg viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M8 3v14M3 13l5 5 5-5"/>
+    </svg>
+    <span>Discover</span>
+  </div>
+</section>
+
+<!-- INTRO / ABOUT -->
+<section id="about" style="background: var(--cream);">
+  <div class="section-intro">
+    <div>
+      <span class="section-label">Our Heritage</span>
+      <h2 class="section-heading">A culture shaped<br>by <em>land and sky</em></h2>
+      <div class="divider"></div>
+      <p class="section-body">
+        The Sámi people have inhabited the Eanodat region, Enontekiö in Finnish for thousands of years. Their lifeways, language, and spiritual relationship with the fell landscape represent a living tradition of remarkable depth, carried through generations by knowledge, story, and craftsmanship.
+      </p>
+      <p class="section-body" style="margin-top:1rem;">
+        Käsivarsi Cultural Center exists not as a museum, but as a living cultural space, birthed by <strong>Juha Tornensis </strong> Tornensis is a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.
+      </p>
+      <p class="section-body" style="margin-top:1rem;">
+        Through authentic structures, intimate programs, and a deep respect for Sámi knowledge, we invite you into a world shaped by reindeer, seasons, and sky.
+      </p>
+    </div>
+    <div class="intro-visual">
+      <img class="intro-img"
+        src="https://images.unsplash.com/photo-1578894680527-2d1d8e4b7a5c?w=800&q=80"
+        alt="Traditional Sámi goahti dwelling in the Finnish tundra"
+        onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80'">
+      <div class="intro-accent"></div>
+      <div class="intro-caption">Kilpisjärvi · 69°N</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND -->
+<div class="quote-band">
+  <blockquote>
+    "The land does not belong to us, we belong to the land. This is something our grandmothers knew, and their grandmothers before them."
+    <cite>— Sámi oral tradition, Eanodat region</cite>
+  </blockquote>
+</div>
+
+<!-- FAMILY GALLERY -->
+<section id="gallery" class="section-gallery">
+  <div class="gallery-header">
+    <div class="gallery-intro">
+      <span class="section-label">Family Archive</span>
+      <h2 class="section-heading">Memories of<br><em>the North</em></h2>
+      <div class="divider"></div>
+      <p class="section-body">
+        These photographs from the family archive span several generations — reindeer herders, craftswomen, storytellers, and children of the fell. Each image carries a thread of the living tradition we are entrusted to preserve.
+      </p>
+    </div>
+  </div>
+
+  <div class="gallery-grid">
+    <!-- Main large image -->
+    <div class="gallery-item">
+      <img
+        src="https://images.unsplash.com/photo-1518176258769-f227c798150e?w=800&q=80"
+        alt="Family archive photograph – reindeer herding in winter fell"
+        onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'">
+      <div class="gallery-caption">Winter herding · Kilpisjärvi fell, c. 1960s</div>
+    </div>
+    <!-- Row 1, second image -->
+    <div class="gallery-item">
+      <img
+        src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80"
+        alt="Family photograph – traditional Sámi winter landscape"
+        onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80'">
+      <div class="gallery-caption">Arctic village life · Eanodat, c. 1950s</div>
+    </div>
+    <!-- Row 1, third image -->
+    <div class="gallery-item">
+      <img
+        src="https://images.unsplash.com/photo-1517783999520-f068d7431a60?w=600&q=80"
+        alt="Family archive – fire and gathering in traditional kota"
+        onerror="this.src='https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&q=80'">
+      <div class="gallery-caption">Gathering by fire · family home, c. 1970s</div>
+    </div>
+    <!-- Row 2, left -->
+    <div class="gallery-item">
+      <img
+        src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=600&q=80"
+        alt="Winter wilderness – fell and birch forest"
+        onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80'">
+      <div class="gallery-caption">Birch forest at dusk · Käsivarsi, c. 1965</div>
+    </div>
+    <!-- Row 2, right -->
+    <div class="gallery-item">
+      <img
+        src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80"
+        alt="Northern lights over the Kilpisjärvi fell landscape"
+        onerror="this.src='https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=600&q=80'">
+      <div class="gallery-caption">Fell in autumn light · Eanodat, c. 1972</div>
+    </div>
+  </div>
+
+  <p class="gallery-note">
+    Images from the family archive of the founding family. Each photograph is a window into the living tradition of the Sámi people, capturing moments of daily life, seasonal change, and the enduring relationship with the land that defines our heritage.
+</section>
+
+<!-- STRUCTURES -->
+<section id="structures" class="section-structures">
+  <div class="structures-header">
+    <div>
+      <span class="section-label">The Living Grounds · Available from Autumn 2026</span>
+      <h2 class="section-heading" style="color:var(--deep)">Authentic <em>Structures</em></h2>
+    </div>
+    <div class="avail-note">Structures 2–5 Ready</div>
+  </div>
+  <div class="structures-grid">
+    <div class="structure-card">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Goahti.jpg/1280px-Goahti.jpg"
+        alt="Traditional Sámi Goahti / Korvakota dwelling"
+        onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'">
+      <div class="card-overlay">
+        <div class="card-number">Structure 02</div>
+        <div class="card-title">Korvakota<br><span style="font-style:italic;font-size:1.3rem">Goahti</span></div>
+        <div class="card-sub">Traditional Sámi Dwelling</div>
+        <p class="card-desc">An authentic turf-and-timber home used by generations of Sámi families. Experience the intimate warmth of a fire at the hearth, surrounded by centuries of living tradition.</p>
+      </div>
+    </div>
+    <div class="structure-card">
+      <img
+        src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&q=80"
+        alt="Traditional Finnish laavu open lean-to shelter in winter forest"
+        onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80'">
+      <div class="card-overlay">
+        <div class="card-number">Structure 03</div>
+        <div class="card-title">Laavu</div>
+        <div class="card-sub">Open Wilderness Shelter</div>
+        <p class="card-desc">Open to the elements and the sky, the laavu is the setting for fire-cooked meals, oral storytelling, and deep encounter with the Arctic landscape in its rawest form.</p>
+      </div>
+    </div>
+    <div class="structure-card">
+      <img
+        src="https://images.unsplash.com/photo-1478827387698-1527781a4887?w=800&q=80"
+        alt="Sámi elevated storage rack suonjir traditional food preservation"
+        onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80'">
+      <div class="card-overlay">
+        <div class="card-number">Structure 04</div>
+        <div class="card-title">Suonjir</div>
+        <div class="card-sub">Elevated Storage Rack</div>
+        <p class="card-desc">A traditional raised rack demonstrating the Sámi art of preservation and survival in the subarctic. A testament to ingenuity shaped entirely by the land itself.</p>
+      </div>
+    </div>
+    <div class="structure-card">
+      <img
+        src="https://images.unsplash.com/photo-1478827387698-1527781a4887?w=800&q=80"
+        alt="Big Korvakota group gathering space"
+        onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80'">
+      <div class="card-overlay">
+        <div class="card-number">Structure 05</div>
+        <div class="card-title">Big Korvakota</div>
+        <div class="card-sub">Community Gathering Space · Already on Site</div>
+        <p class="card-desc">Our largest gathering kota — already standing at Kilpisjärvi. A spacious space for group programs, cultural events, and community occasions. The heart of the grounds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMING LATER -->
+<section class="section-coming">
+  <div class="coming-inner">
+    <div>
+      <span class="section-label">Phase 2 · Coming Later</span>
+      <h2 class="section-heading">Main Cultural<br><em>Building</em></h2>
+      <div class="divider"></div>
+      <p class="section-body">The centerpiece of Käsivarsi — a purpose-built cultural hub that will deepen every encounter with Sámi heritage, designed according to traditional principles of the North.</p>
+      <ul class="feature-list">
+        <li>Permanent &amp; temporary Sámi heritage exhibitions</li>
+        <li>Reception and cultural documentation center</li>
+        <li>Multipurpose hall — up to 60 guests</li>
+        <li>Dining experiences rooted in Arctic culinary tradition</li>
+      </ul>
+    </div>
+    <div class="coming-visual">
+      <img
+        src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80"
+        alt="Arctic Kilpisjärvi landscape where the cultural center will stand"
+        onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80'">
+      <div class="coming-badge">Coming in Phase 2</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / EXPERIENCE -->
+<section id="visit" class="section-tour">
+  <div class="tour-inner">
+    <span class="section-label">Come and Experience</span>
+    <h2 class="section-heading">Guided <em>Programs</em></h2>
+    <p class="section-body" style="color:var(--mid);opacity:0.7;margin-top:1rem;max-width:540px;margin-left:auto;margin-right:auto;">
+      An intimate, expert-led encounter with the living heritage of the Sámi people — their structures, their knowledge systems, and their enduring relationship with the Arctic land.
+    </p>
+    <div class="tour-grid">
+      <div class="tour-item">
+        <div class="tour-item-label">Program Type</div>
+        <div class="tour-item-value">Guided</div>
+        <div class="tour-item-note">Led by a Sámi cultural guide</div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-item-label">Duration</div>
+        <div class="tour-item-value">~1 Hour</div>
+        <div class="tour-item-note">Extended programs available</div>
+      </div>
+      <div class="tour-item">
+        <div class="tour-item-label">Groups</div>
+        <div class="tour-item-value">Min. 10</div>
+        <div class="tour-item-note">Contact us for group pricing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EU SUPPORT -->
+<section class="section-eu">
+  <div class="eu-inner">
+    <!-- EU Stars emblem -->
+    <div class="eu-emblem" title="Co-funded by the European Union">
+      <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+        <!-- 12 gold stars in a circle -->
+        <g fill="#FFCC00">
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(0 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(30 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(60 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(90 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(120 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(150 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(180 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(210 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(240 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(270 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(300 26 26)"/>
+          <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(330 26 26)"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="eu-text">
+      <span class="section-label">Supported by</span>
+      <div class="eu-title">Co-funded by the European Union</div>
+      <p class="eu-body">
+        Käsivarsi Cultural Center has received support from the European Union in recognition of the importance of preserving and transmitting indigenous cultural heritage. This funding contributes to the construction of cultural structures, the development of educational programs, and the safeguarding of Sámi intangible heritage in the Eanodat region.
+      </p>
+    </div>
+
+    <div class="eu-logos">
+      <div class="eu-logo-pill">European Union<br>ERDF 2021–2027</div>
+      <div class="eu-logo-pill">Finland<br>Ministry of Education</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-contact">
+  <div class="contact-inner">
+    <div class="logo-mark">
+      <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="13,2 24,20 2,20" stroke="#B85A28" stroke-width="1.5" fill="none"/>
+        <circle cx="13" cy="13" r="3" fill="#B85A28" opacity="0.7"/>
+      </svg>
+    </div>
+    <span class="section-label" style="color:var(--ember)">Plan Your Visit</span>
+    <h2 class="section-heading">Get in <em>Touch</em></h2>
+    <p class="section-body">For program bookings, group inquiries, or to learn more about the center and our cultural mission, reach out. We welcome schools, cultural organisations, and all who wish to learn.</p>
+    <div class="contact-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label for="date">Preferred Date</label>
+        <input type="text" id="date" placeholder="Autumn 2026 onwards">
+      </div>
+      <div class="form-group">
+        <label for="group">Group Type</label>
+        <input type="text" id="group" placeholder="School / Organisation / Family…">
+      </div>
+      <div class="form-group full">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us about your group or what brings you here…"></textarea>
+      </div>
+      <button class="btn-submit" onclick="alert('Thank you — we will be in touch soon.')">Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Käsivarsi Cultural Center</div>
+  <div class="footer-links">
+    <a href="#about">Heritage</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#structures">Structures</a>
+    <a href="#visit">Visit</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-meta">Kilpisjärvi · Eanodat · Finland · 69°N · Co-funded by the European Union</div>
+</footer>
+
+</body>
+</html>
