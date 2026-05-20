@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Käsivarsi Cultural Center</title>
+<title>Kasivarsi Saami Cultural Center</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -75,7 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .gal-bg{background:var(--linen);padding:7rem 3rem}
 .gal-intro{max-width:560px;margin-bottom:4rem}
 .gal-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto auto;gap:6px}
-.gi{position:relative;overflow:hidden;background:var(--sepia);cursor:pointer}
+.gi{position:relative;background:var(--sepia);cursor:pointer;display: flex; flex-direction: column; }
 .gi:nth-child(1){grid-column:span 5;grid-row:span 2}
 .gi:nth-child(2){grid-column:span 4}
 .gi:nth-child(3){grid-column:span 3}
@@ -85,8 +85,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .gi:nth-child(1) img{min-height:460px}
 .gi:hover img{filter:sepia(.3) contrast(.95) brightness(.95);transform:scale(1.03)}
 .gi::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 40px rgba(92,74,50,.35);pointer-events:none}
-.gi-cap{position:absolute;bottom:0;left:0;right:0;padding:1.2rem 1rem .8rem;background:linear-gradient(to top,rgba(42,30,16,.8),transparent);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);opacity:0;transition:opacity .4s}
-.gi:hover .gi-cap{opacity:1}
+.gi-img-wrap { position: relative; overflow: hidden; flex: 1;}
+.gi-cap { padding: 0.6rem 0.8rem 0.5rem; background: var(--bark); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--parchment); opacity: 1; line-height: 1.55; flex-shrink: 0;}
+  .gi:hover .gi-cap{opacity:1}
 .gal-note{max-width:1200px;margin:2.5rem auto 0;font-size:.72rem;color:var(--smoke);font-style:italic;border-left:2px solid var(--ember);padding-left:1rem;line-height:1.7}
 
 /* STRUCTURES */
@@ -194,13 +195,9 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
   <div class="lang-sw">
     <button class="lang-btn active" data-lang="en" title="English"><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span></button>
     <button class="lang-btn" data-lang="se" title="Northern Sámi">
-      <svg class="sapmi-flag" viewBox="0 0 44 28" xmlns="http://www.w3.org/2000/svg">
-        <rect width="44" height="7" fill="#003F87"/><rect y="7" width="44" height="7" fill="#C8102E"/>
-        <rect y="14" width="44" height="7" fill="#FFCD00"/><rect y="21" width="44" height="7" fill="#007A3D"/>
-        <circle cx="18" cy="14" r="10" fill="#003F87" stroke="#FFCD00" stroke-width="1.8"/>
-        <path d="M18 4 A10 10 0 0 1 18 24" fill="#C8102E"/>
-      </svg>
-      <span class="lang-code">SE</span>
+      <img src="images/samiflag.png" class="sapmi-flag" alt="Sámi flag">
+
+      <span class="lang-code">SA</span>
     </button>
     <button class="lang-btn" data-lang="fi" title="Suomi"><span class="lang-flag">🇫🇮</span><span class="lang-code">FI</span></button>
     <button class="lang-btn" data-lang="sv" title="Svenska"><span class="lang-flag">🇸🇪</span><span class="lang-code">SV</span></button>
@@ -214,7 +211,7 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
   <div class="hero-ov"></div>
   <div class="hero-c">
     <div class="hero-eye">Kilpisjärvi · Finland · Enontekiö · 69°N</div>
-    <h1 class="hero-title">Käsivarsi<br><em id="h-sub-title">Cultural Center</em></h1>
+    <h1 class="hero-title">Käsivarsi<br><em id="h-sub-title">Saami Cultural Center</em></h1>
     <p class="hero-sub" id="h-sub">Sámi Heritage · Eanodat Region</p>
     <p class="hero-tag" id="h-tag">A living encounter with one of the world's oldest indigenous cultures, rooted in the land and memory of the North.</p>
     <span class="hero-badge" id="h-badge">Opening Autumn 2026</span>
@@ -233,11 +230,11 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
       <h2 class="sec-head" id="a-head">A culture shaped by <em>land and sky</em></h2>
       <div class="divider"></div>
       <p class="sec-body" id="a-p1">The Sámi people have inhabited the Eanodat region — Enontekiö in Finnish — for thousands of years. Their lifeways, language, and spiritual relationship with the fell landscape represent a living tradition of remarkable depth, carried through generations by knowledge, story, and craftsmanship.</p>
-      <p class="sec-body" style="margin-top:1rem" id="a-p2">Käsivarsi Cultural Center exists not as a museum, but as a living cultural space — birthed by Juha Tornensis — a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.</p>
+      <p class="sec-body" style="margin-top:1rem" id="a-p2">Kasivarsi Saami Cultural Center exists not as a museum, but as a living cultural space — birthed by Juha Tornensis — a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.</p>
       <p class="sec-body" style="margin-top:1rem" id="a-p3">Through authentic structures, intimate programs, and a deep respect for Sámi knowledge, we invite you into a world shaped by reindeer, seasons, duodji, and sky.</p>
     </div>
     <div class="intro-vis">
-      <img class="intro-img" src="https://images.unsplash.com/photo-1578894680527-2d1d8e4b7a5c?w=800&q=80" alt="Sámi goahti" onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80'">
+      <img class="intro-img" src="images/juha.jpeg" alt="Sámi goahti" onerror="this.src='images/juha.jpeg'">
       <div class="intro-acc"></div>
       <div class="intro-cap">Kilpisjärvi · 69°N</div>
     </div>
@@ -247,8 +244,8 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
 <!-- QUOTE -->
 <div class="quote-band">
   <blockquote>
-    <span id="q-text">"The land does not belong to us — we belong to the land. This is something our grandmothers knew, and their grandmothers before them."</span>
-    <cite id="q-cite">— Sámi oral tradition, Eanodat region</cite>
+    <span id="q-text">"The land does not belong to us — we belong to the land. This is something our grandparents knew, and their grandparents before them."</span>
+    <cite id="q-cite"></cite>
   </blockquote>
 </div>
 
@@ -262,11 +259,17 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
       <p class="sec-body" id="g-body">These photographs from the family archive span several generations — reindeer herders, craftswomen, storytellers, and children of the fell. Each image carries a thread of the living tradition we are entrusted to preserve.</p>
     </div>
     <div class="gal-grid">
-      <div class="gi"><img src="https://images.unsplash.com/photo-1518176258769-f227c798150e?w=800&q=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'"><div class="gi-cap" id="gc1">Winter herding · Kilpisjärvi fell, c. 1960s</div></div>
-      <div class="gi"><img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80'"><div class="gi-cap" id="gc2">Arctic village life · Eanodat, c. 1950s</div></div>
-      <div class="gi"><img src="https://images.unsplash.com/photo-1517783999520-f068d7431a60?w=600&q=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&q=80'"><div class="gi-cap" id="gc3">Gathering by fire · family home, c. 1970s</div></div>
-      <div class="gi"><img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=600&q=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80'"><div class="gi-cap" id="gc4">Birch forest at dusk · Käsivarsi, c. 1965</div></div>
-      <div class="gi"><img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&q=80" alt="" onerror="this.src='https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=600&q=80'"><div class="gi-cap" id="gc5">Fell in autumn light · Eanodat, c. 1972</div></div>
+<div class="gi">
+  <div class="gi-img-wrap">
+    <img src="images/1.jpg" alt="">
+  </div>
+  
+</div>
+
+<div class="gi"><img src="images/2.jpg" alt="" onerror="this.src='images/2.jpg'"></div>
+      <div class="gi"><img src="images/3.jpg" alt="" onerror="this.src='images/3.jpg'"></div>
+      <div class="gi"><img src="images/4.jpg" alt="" onerror="this.src='images/4.jpg'"></div>
+      <div class="gi"><img src="images/5.jpg" alt="" onerror="this.src='images/5.jpg'"></div>
     </div>
     <p class="gal-note" id="g-note">Images from the family archive of the founding family. Each photograph is a window into the living tradition of the Sámi people, capturing moments of daily life, seasonal change, and the enduring relationship with the land that defines our heritage.</p>
   </div>
@@ -282,9 +285,9 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
     <div class="avail" id="s-avail">Structures 2–5 Ready</div>
   </div>
   <div class="str-grid">
-    <div class="sc"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Goahti.jpg/1280px-Goahti.jpg" alt="Goahti" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'"><div class="sc-ov"><div class="sc-num">02</div><div class="sc-title">Korvakota / <em>Goahti</em></div><div class="sc-sub" id="c2s">Traditional Sámi Dwelling</div><p class="sc-desc" id="c2d">An authentic turf-and-timber home used by generations of Sámi families. Experience the intimate warmth of a fire at the hearth, surrounded by centuries of living tradition.</p></div></div>
+    <div class="sc"><img src="images/kota1.png" alt="Goahti" onerror="this.src='images/kota1.png'"><div class="sc-ov"><div class="sc-num">02</div><div class="sc-title">Korvakota / <em>Goahti</em></div><div class="sc-sub" id="c2s">Traditional Sámi Dwelling</div><p class="sc-desc" id="c2d">An authentic turf-and-timber home used by generations of Sámi families. Experience the intimate warmth of a fire at the hearth, surrounded by centuries of living tradition.</p></div></div>
     <div class="sc"><img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&q=80" alt="Laavu" onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80'"><div class="sc-ov"><div class="sc-num">03</div><div class="sc-title">Laavu</div><div class="sc-sub" id="c3s">Open Wilderness Shelter</div><p class="sc-desc" id="c3d">Open to the elements and the sky, the laavu is the setting for fire-cooked meals, oral storytelling, and deep encounter with the Arctic landscape in its rawest form.</p></div></div>
-    <div class="sc"><img src="https://images.unsplash.com/photo-1478827387698-1527781a4887?w=800&q=80" alt="Suonjir" onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80'"><div class="sc-ov"><div class="sc-num">04</div><div class="sc-title">Suonjir</div><div class="sc-sub" id="c4s">Elevated Storage Rack</div><p class="sc-desc" id="c4d">A traditional raised rack demonstrating the Sámi art of preservation and survival in the subarctic. A testament to ingenuity shaped entirely by the land itself.</p></div></div>
+    <div class="sc"><img src="images/suonjir.jpg" alt="Suonjir" onerror="this.src='images/suonjir.jpg'"><div class="sc-ov"><div class="sc-num">04</div><div class="sc-title">Suonjir</div><div class="sc-sub" id="c4s">Elevated Storage Rack</div><p class="sc-desc" id="c4d">A traditional raised rack demonstrating the Sámi art of preservation and survival in the subarctic. A testament to ingenuity shaped entirely by the land itself.</p></div></div>
     <div class="sc"><img src="https://images.unsplash.com/photo-1478827387698-1527781a4887?w=800&q=80" alt="Big Korvakota" onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80'"><div class="sc-ov"><div class="sc-num">05</div><div class="sc-title" id="c5t">Big Korvakota</div><div class="sc-sub" id="c5s">Community Gathering Space · Already on Site</div><p class="sc-desc" id="c5d">Our largest gathering kota — already standing at Kilpisjärvi. A spacious space for group programs, cultural events, and community occasions. The heart of the grounds.</p></div></div>
   </div>
 </section>
@@ -347,11 +350,11 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
     <div class="eu-text">
       <span class="sec-label" id="eu-lbl">Supported by</span>
       <div class="eu-title-t" id="eu-title">Co-funded by the European Union</div>
-      <p class="eu-body-t" id="eu-body">Käsivarsi Cultural Center has received support from the European Union in recognition of the importance of preserving and transmitting indigenous cultural heritage. This funding contributes to the construction of cultural structures, the development of educational programs, and the safeguarding of Sámi intangible heritage in the Eanodat region.</p>
+      <p class="eu-body-t" id="eu-body">Kasivarsi Saami Cultural Center has received support from the European Union in recognition of the importance of preserving and transmitting indigenous cultural heritage. This funding contributes to the construction of cultural structures, the development of educational programs, and the safeguarding of Sámi intangible heritage in the Eanodat region.</p>
     </div>
     <div class="eu-logos">
       <div class="eu-pill" id="eu-p1">European Union<br>ERDF 2021–2027</div>
-      <div class="eu-pill" id="eu-p2">Finland<br>Ministry of Education</div>
+      
     </div>
   </div>
 </section>
@@ -375,7 +378,7 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
 </section>
 
 <footer>
-  <div class="f-logo">Käsivarsi Cultural Center</div>
+  <div class="f-logo">Kasivarsi Saami Cultural Center</div>
   <div class="f-links">
     <a href="#about" id="fn-heritage">Heritage</a>
     <a href="#gallery" id="fn-gallery">Gallery</a>
@@ -398,7 +401,7 @@ en:{
   "a-label":"Our Heritage",
   "a-head":"A culture shaped by <em>land and sky</em>",
   "a-p1":"The Sámi people have inhabited the Eanodat region — Enontekiö in Finnish — for thousands of years. Their lifeways, language, and spiritual relationship with the fell landscape represent a living tradition of remarkable depth, carried through generations by knowledge, story, and craftsmanship.",
-  "a-p2":"Käsivarsi Cultural Center exists not as a museum, but as a living cultural space — birthed by Juha Tornensis — a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.",
+  "a-p2":"Kasivarsi Saami Cultural Center exists not as a museum, but as a living cultural space — birthed by Juha Tornensis — a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.",
   "a-p3":"Through authentic structures, intimate programs, and a deep respect for Sámi knowledge, we invite you into a world shaped by reindeer, seasons, duodji, and sky.",
   "q-text":"\u201CThe land does not belong to us \u2014 we belong to the land. This is something our grandmothers knew, and their grandmothers before them.\u201D",
   "q-cite":"\u2014 S\u00e1mi oral tradition, Eanodat region",
@@ -412,7 +415,7 @@ en:{
   "c4s":"Elevated Storage Rack","c4d":"A traditional raised rack demonstrating the Sámi art of preservation and survival in the subarctic. A testament to ingenuity shaped entirely by the land itself.",
   "c5t":"Big Korvakota","c5s":"Community Gathering Space · Already on Site","c5d":"Our largest gathering kota — already standing at Kilpisjärvi. A spacious space for group programs, cultural events, and community occasions. The heart of the grounds.",
   "p2-lbl":"Phase 2 · Coming Later","p2-head":"Main Cultural <em>Building</em>",
-  "p2-body":"The centerpiece of Käsivarsi — a purpose-built cultural hub that will deepen every encounter with Sámi heritage, designed according to traditional principles of the North.",
+  "p2-body":"The centerpiece of Kasivarsi Saami Cultural Center — a purpose-built cultural hub that will deepen every encounter with Sámi heritage, designed according to traditional principles of the North.",
   "f1":"Permanent &amp; temporary Sámi heritage exhibitions","f2":"Reception and cultural documentation center","f3":"Multipurpose hall — up to 60 guests","f4":"Dining experiences rooted in Arctic culinary tradition",
   "p2-badge":"Coming in Phase 2",
   "v-label":"Come and Experience","v-head":"Guided <em>Programs</em>",
@@ -421,7 +424,7 @@ en:{
   "t2l":"Duration","t2v":"~1 Hour","t2n":"Extended programs available",
   "t3l":"Groups","t3v":"Min. 10","t3n":"Contact us for group pricing",
   "eu-lbl":"Supported by","eu-title":"Co-funded by the European Union",
-  "eu-body":"Käsivarsi Cultural Center has received support from the European Union in recognition of the importance of preserving and transmitting indigenous cultural heritage. This funding contributes to the construction of cultural structures, the development of educational programs, and the safeguarding of Sámi intangible heritage in the Eanodat region.",
+  "eu-body":"Kasivarsi Saami Cultural Center has received support from the European Union in recognition of the importance of preserving and transmitting indigenous cultural heritage. This funding contributes to the construction of cultural structures, the development of educational programs, and the safeguarding of Sámi intangible heritage in the Eanodat region.",
   "eu-p1":"European Union<br>ERDF 2021\u20132027","eu-p2":"Finland<br>Ministry of Education",
   "co-lbl":"Plan Your Visit","co-head":"Get in <em>Touch</em>",
   "co-body":"For program bookings, group inquiries, or to learn more about the center and our cultural mission, reach out. We welcome schools, cultural organisations, and all who wish to learn.",
@@ -441,7 +444,7 @@ se:{
   "a-label":"Mii Árbi",
   "a-head":"Kultuvra maid <em>eatnan ja almmi</em> hábmii",
   "a-p1":"Sámit leat orron Eanodat guovllus — Enontekiö suomagielas — duhát jagiin. Sin eallima vuohki, giella ja vuoiŋŋalas oktavuohta várieatnamiin ovdanbuktá ellenbealái árbevierru mii lea mearkkašahtti dáfus, ja mii lea joatkán buolvvas bulvii máhtu, muitalusa ja ealáskáhppu bokte.",
-  "a-p2":"Käsivarsi Kulturguovddáš ii leat museálahtti, muhto ealli kulturdoaimmahat — šaddojuvvon Juha Tornensii — sadji gos árbevierut vuoiŋŋastit, gos máhttu juohkásuvvá, ja gos sámi jiena gullon.",
+  "a-p2":"Kasivarsi Saami Kulturguovddáš ii leat museálahtti, muhto ealli kulturdoaimmahat — šaddojuvvon Juha Tornensii — sadji gos árbevierut vuoiŋŋastit, gos máhttu juohkásuvvá, ja gos sámi jiena gullon.",
   "a-p3":"Duođalaš huksehagiid, lávdemiid ja sámi máhtu gudnejahttima bokte bovdet mii du máilbmái maid boazu, jahkodagat, duodji ja albmi hábmet.",
   "q-text":"\u201CEanan ii gula midjiide \u2014 mii gullat eatnamii. Dán dovde máttáráddjámet, ja sin máttáráddjámet ovdal sidjiide.\u201D",
   "q-cite":"\u2014 Sámi njálmmálaš árbevierru, Eanodat",
@@ -527,7 +530,7 @@ sv:{
   "a-label":"Vårt arv",
   "a-head":"En kultur formad av <em>mark och himmel</em>",
   "a-p1":"Samerna har bott i Eanodat-regionen — Enontekiö på finska — i tusentals år. Deras levnadssätt, språk och andliga förhållande till fjälllandskapet representerar en levande tradition av anmärkningsvärt djup, förd vidare genom generationer av kunskap, berättelse och hantverk.",
-  "a-p2":"Käsivarsi kulturcentrum existerar inte som ett museum utan som ett levande kulturrum — grundat av Juha Tornensis — en plats där traditioner andas, där kunskap delas och där den samiska rösten talar för sig själv.",
+  "a-p2":"Kasivarsi saami kulturcentrum existerar inte som ett museum utan som ett levande kulturrum — grundat av Juha Tornensis — en plats där traditioner andas, där kunskap delas och där den samiska rösten talar för sig själv.",
   "a-p3":"Genom äkta byggnader, intima program och en djup respekt för samisk kunskap bjuder vi in dig till en värld formad av renar, årstider, duodji och himmel.",
   "q-text":"\u201CMarken tillhör oss inte \u2014 vi tillhör marken. Detta visste våra mormödrar, och deras mormödrar före dem.\u201D",
   "q-cite":"\u2014 Samisk muntlig tradition, Eanodat-regionen",
@@ -550,7 +553,7 @@ sv:{
   "t2l":"Varaktighet","t2v":"~1 timme","t2n":"Utökade program tillgängliga",
   "t3l":"Grupper","t3v":"Min. 10","t3n":"Kontakta oss för gruppriser",
   "eu-lbl":"Stöds av","eu-title":"Medfinansierat av Europeiska unionen",
-  "eu-body":"Käsivarsi kulturcentrum har fått stöd från Europeiska unionen som ett erkännande av vikten av att bevara och förmedla urfolks kulturarv.",
+  "eu-body":"Kasivarsi saami kulturcentrum har fått stöd från Europeiska unionen som ett erkännande av vikten av att bevara och förmedla urfolks kulturarv.",
   "eu-p1":"Europeiska unionen<br>ERUF 2021\u20132027","eu-p2":"Finland<br>Undervisningsministeriet",
   "co-lbl":"Planera ditt besök","co-head":"Ta <em>kontakt</em>",
   "co-body":"För programbokningar eller för att lära dig mer om centret och vårt kulturella uppdrag, hör av dig. Vi välkomnar skolor, kulturorganisationer och alla som vill lära sig.",
@@ -570,7 +573,7 @@ no:{
   "a-label":"Vår arv",
   "a-head":"En kultur formet av <em>jord og himmel</em>",
   "a-p1":"Samene har bebodd Eanodat-regionen — Enontekiö på finsk — i tusenvis av år. Deres levemåte, språk og åndelige forhold til fjelllandskapet representerer en levende tradisjon av bemerkelsesverdig dybde, videreført gjennom generasjoner av kunnskap, fortelling og håndverk.",
-  "a-p2":"Käsivarsi kultursenter eksisterer ikke som et museum, men som et levende kulturrom — grunnlagt av Juha Tornensis — et sted hvor tradisjoner puster, hvor kunnskap deles og hvor den samiske stemmen taler for seg selv.",
+  "a-p2":"Kasivarsi Saami Kultursenter eksisterer ikke som et museum, men som et levende kulturrom — grunnlagt av Juha Tornensis — et sted hvor tradisjoner puster, hvor kunnskap deles og hvor den samiske stemmen taler for seg selv.",
   "a-p3":"Gjennom autentiske bygninger, intime programmer og dyp respekt for samisk kunnskap inviterer vi deg inn i en verden formet av rein, årstider, duodji og himmel.",
   "q-text":"\u201CJorda tilhører oss ikke \u2014 vi tilhører jorda. Dette visste bestemorene våre, og deres bestemødre før dem.\u201D",
   "q-cite":"\u2014 Samisk muntlig tradisjon, Eanodat-regionen",
@@ -593,7 +596,7 @@ no:{
   "t2l":"Varighet","t2v":"~1 time","t2n":"Utvidede programmer tilgjengelig",
   "t3l":"Grupper","t3v":"Min. 10","t3n":"Kontakt oss for gruppepriser",
   "eu-lbl":"Støttet av","eu-title":"Medfinansiert av Den europeiske union",
-  "eu-body":"Käsivarsi kultursenter har mottatt støtte fra Den europeiske union i anerkjennelse av viktigheten av å bevare og formidle urfolks kulturarv.",
+  "eu-body":"Kasivarsi Saami Kultursenter har mottatt støtte fra Den europeiske union i anerkjennelse av viktigheten av å bevare og formidle urfolks kulturarv.",
   "eu-p1":"Den europeiske union<br>ERDF 2021\u20132027","eu-p2":"Finland<br>Undervisningsministeriet",
   "co-lbl":"Planlegg ditt besøk","co-head":"Ta <em>kontakt</em>",
   "co-body":"For programbookinger eller for å lære mer om senteret og vårt kulturelle oppdrag, ta kontakt. Vi ønsker velkommen skoler, kulturorganisasjoner og alle som ønsker å lære.",
