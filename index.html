@@ -129,15 +129,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .con-inner{max-width:700px;margin:0 auto;text-align:center}
 .logo-mark{width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ember);border-radius:50%;margin-bottom:1.5rem}
 .logo-mark svg{width:26px;height:26px}
+
+/* FORM */
 .con-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left;margin-top:2rem}
 .fg{display:flex;flex-direction:column;gap:.4rem}
 .fg.full{grid-column:span 2}
 .fg label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--smoke)}
-.fg input,.fg textarea{background:transparent;border:none;border-bottom:1px solid rgba(92,74,50,.3);color:var(--mid);font-family:'Raleway',sans-serif;font-size:.9rem;padding:.7rem 0;outline:none;transition:border-color .3s;width:100%}
-.fg input:focus,.fg textarea:focus{border-color:var(--ember)}
+.fg input,.fg textarea,.fg select{background:transparent;border:none;border-bottom:1px solid rgba(92,74,50,.3);color:var(--mid);font-family:'Raleway',sans-serif;font-size:.9rem;padding:.7rem 0;outline:none;transition:border-color .3s;width:100%;-webkit-appearance:none;appearance:none}
+.fg select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237A6E62' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:1.5rem}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--ember)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(122,110,98,.45)}
 .fg textarea{resize:none;height:100px}
-.btn-sub{grid-column:span 2;margin-top:1rem;background:var(--ember);color:white;border:none;cursor:pointer;font-family:'Raleway',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;padding:1rem 2.5rem;transition:background .3s}
+
+/* honeypot — hidden from humans */
+.ohnohoney{display:none !important;position:absolute;left:-9999px}
+
+.btn-sub{grid-column:span 2;margin-top:1rem;background:var(--ember);color:white;border:none;cursor:pointer;font-family:'Raleway',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;padding:1rem 2.5rem;transition:background .3s,opacity .3s;position:relative}
 .btn-sub:hover{background:#963e16}
+.btn-sub:disabled{opacity:.6;cursor:not-allowed}
+
+/* SUCCESS / ERROR banners */
+.form-msg{grid-column:span 2;padding:1rem 1.2rem;font-size:.8rem;letter-spacing:.08em;line-height:1.6;display:none}
+.form-msg.success{border:1px solid var(--aurora);color:var(--aurora);background:rgba(58,106,94,.07)}
+.form-msg.error{border:1px solid var(--ember);color:var(--ember);background:rgba(184,90,40,.06)}
+.form-msg.show{display:block}
 
 /* FOOTER */
 footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
@@ -159,7 +174,7 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
   .str-grid{grid-template-columns:1fr}
   .tour-grid{grid-template-columns:1fr}
   .con-form{grid-template-columns:1fr}
-  .fg.full,.btn-sub{grid-column:span 1}
+  .fg.full,.btn-sub,.form-msg{grid-column:span 1}
   .str-hdr{flex-direction:column;align-items:flex-start;gap:1.5rem}
   .eu-inner{flex-direction:column;align-items:flex-start;gap:1.5rem}
   footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}
@@ -236,42 +251,11 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
       <p class="sec-body">These photographs from the family archive span several generations — reindeer herders, craftswomen, storytellers, and children of the fell. Each image carries a thread of the living tradition we are entrusted to preserve.</p>
     </div>
     <div class="gal-grid">
-
-      <div class="gi">
-        <div class="gi-img-wrap">
-          <img src="images/1.jpg" alt="Family archive photo 1">
-        </div>
-        <div class="gi-cap">Winter herding · Kilpisjärvi fell, c. 1960s</div>
-      </div>
-
-      <div class="gi">
-        <div class="gi-img-wrap">
-          <img src="images/2.jpg" alt="Family archive photo 2">
-        </div>
-        <div class="gi-cap">Arctic village life · Eanodat, c. 1950s</div>
-      </div>
-
-      <div class="gi">
-        <div class="gi-img-wrap">
-          <img src="images/3.jpg" alt="Family archive photo 3">
-        </div>
-        <div class="gi-cap">Gathering by fire · family home, c. 1970s</div>
-      </div>
-
-      <div class="gi">
-        <div class="gi-img-wrap">
-          <img src="images/4.jpg" alt="Family archive photo 4">
-        </div>
-        <div class="gi-cap">Birch forest at dusk · Käsivarsi, c. 1965</div>
-      </div>
-
-      <div class="gi">
-        <div class="gi-img-wrap">
-          <img src="images/5.jpg" alt="Family archive photo 5">
-        </div>
-        <div class="gi-cap">Fell in autumn light · Eanodat, c. 1972</div>
-      </div>
-
+      <div class="gi"><div class="gi-img-wrap"><img src="images/1.jpg" alt="Family archive photo 1"></div></div>
+      <div class="gi"><div class="gi-img-wrap"><img src="images/2.jpg" alt="Family archive photo 2"></div></div>
+      <div class="gi"><div class="gi-img-wrap"><img src="images/3.jpg" alt="Family archive photo 3"></div></div>
+      <div class="gi"><div class="gi-img-wrap"><img src="images/4.jpg" alt="Family archive photo 4"></div></div>
+      <div class="gi"><div class="gi-img-wrap"><img src="images/5.jpg" alt="Family archive photo 5"></div></div>
     </div>
     <p class="gal-note">Images from the family archive of the founding family. Each photograph is a window into the living tradition of the Sámi people, capturing moments of daily life, seasonal change, and the enduring relationship with the land that defines our heritage.</p>
   </div>
@@ -288,10 +272,11 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
   </div>
   <div class="str-grid">
     <div class="sc"><img src="images/kota1.png" alt="Goahti"><div class="sc-ov"><div class="sc-num">02</div><div class="sc-title">Korvakota / <em>Goahti</em></div><div class="sc-sub">Traditional Sámi Dwelling</div><p class="sc-desc">An authentic turf-and-timber home used by generations of Sámi families. Experience the intimate warmth of a fire at the hearth, surrounded by centuries of living tradition.</p></div></div>
-    <div class="sc"><img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=800&q=80" alt="Laavu"><div class="sc-ov"><div class="sc-num">03</div><div class="sc-title">Laavu</div><div class="sc-sub">Open Wilderness Shelter</div><p class="sc-desc">Open to the elements and the sky, the laavu is the setting for fire-cooked meals, oral storytelling, and deep encounter with the Arctic landscape in its rawest form.</p></div></div>
+    <div class="sc"><img src="images/laavu.jpeg" alt="Laavu"><div class="sc-ov"><div class="sc-num">03</div><div class="sc-title">Laavu</div><div class="sc-sub">Open Wilderness Shelter</div><p class="sc-desc">Open to the elements and the sky, the laavu is the setting for fire-cooked meals, oral storytelling, and deep encounter with the Arctic landscape in its rawest form.</p></div></div>
     <div class="sc"><img src="images/suonjir.jpg" alt="Suonjir"><div class="sc-ov"><div class="sc-num">04</div><div class="sc-title">Suonjir</div><div class="sc-sub">Elevated Storage Rack</div><p class="sc-desc">A traditional raised rack demonstrating the Sámi art of preservation and survival in the subarctic. A testament to ingenuity shaped entirely by the land itself.</p></div></div>
     <div class="sc"><img src="https://images.unsplash.com/photo-1478827387698-1527781a4887?w=800&q=80" alt="Big Korvakota"><div class="sc-ov"><div class="sc-num">05</div><div class="sc-title">Big Korvakota</div><div class="sc-sub">Community Gathering Space · Already on Site</div><p class="sc-desc">Our largest gathering kota — already standing at Kilpisjärvi. A spacious space for group programs, cultural events, and community occasions. The heart of the grounds.</p></div></div>
   </div>
+  <p class="gal-note" style="max-width:1200px;margin:2.5rem auto 0"><strong>Images are representative only, main authentic structures to be built.</strong></p>
 </section>
 
 <!-- COMING -->
@@ -367,14 +352,97 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
     <span class="sec-label" style="color:var(--ember)">Plan Your Visit</span>
     <h2 class="sec-head">Get in <em>Touch</em></h2>
     <p class="sec-body">For program bookings, group inquiries, or to learn more about the center and our cultural mission, reach out. We welcome schools, cultural organisations, and all who wish to learn.</p>
-    <div class="con-form">
-      <div class="fg"><label>Name</label><input type="text" placeholder="Your name"></div>
-      <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-      <div class="fg"><label>Preferred Date</label><input type="text" placeholder="Autumn 2026 onwards"></div>
-      <div class="fg"><label>Group Type</label><input type="text" placeholder="School / Organisation / Family…"></div>
-      <div class="fg full"><label>Message</label><textarea placeholder="Tell us about your group or what brings you here…"></textarea></div>
-      <button class="btn-sub" id="submitBtn">Send Enquiry</button>
-    </div>
+
+    <!--
+      NETLIFY FORMS
+      ─────────────────────────────────────────────────────────────────
+      • data-netlify="true"         → Netlify detects & processes this form
+      • name="enquiry"              → form name in Netlify dashboard
+      • netlify-honeypot="bot-field"→ spam trap (hidden field)
+      • action="/thank-you"         → redirect after submit (optional page)
+      
+      On your FREE Netlify account go to:
+        Site → Forms → enquiry → Notifications → Add email juha.t@gmail.com
+      Netlify will forward every submission straight to your Gmail.
+      ─────────────────────────────────────────────────────────────────
+    -->
+    <form
+      class="con-form"
+      name="enquiry"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      id="enquiryForm"
+    >
+      <!-- Netlify hidden fields -->
+      <input type="hidden" name="form-name" value="enquiry">
+
+      <!-- Honeypot — invisible to humans, catches bots -->
+      <div class="ohnohoney">
+        <label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="fg">
+        <label for="f-name">Name</label>
+        <input id="f-name" type="text" name="name" placeholder="Your name" required>
+      </div>
+
+      <div class="fg">
+        <label for="f-email">Email</label>
+        <input id="f-email" type="email" name="email" placeholder="your@email.com" required>
+      </div>
+
+      <div class="fg">
+        <label for="f-date">Preferred Date</label>
+        <input id="f-date" type="text" name="preferred_date" placeholder="Autumn 2026 onwards">
+      </div>
+
+      <div class="fg">
+        <label for="f-group">Group Type</label>
+        <select id="f-group" name="group_type">
+          <option value="" disabled selected>Select group type…</option>
+          <option>School / Education</option>
+          <option>Cultural Organisation</option>
+          <option>Corporate / Team</option>
+          <option>Family</option>
+          <option>Individual</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label for="f-size">Group Size</label>
+        <input id="f-size" type="number" name="group_size" placeholder="e.g. 12" min="1">
+      </div>
+
+      <div class="fg">
+        <label for="f-lang">Preferred Language</label>
+        <select id="f-lang" name="language">
+          <option value="" disabled selected>Select language…</option>
+          <option>English</option>
+          <option>Finnish / Suomi</option>
+          <option>Swedish / Svenska</option>
+          <option>Norwegian / Norsk</option>
+          <option>Sámi</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="fg full">
+        <label for="f-msg">Message</label>
+        <textarea id="f-msg" name="message" placeholder="Tell us about your group or what brings you here…" required></textarea>
+      </div>
+
+      <!-- Inline success / error messages -->
+      <div class="form-msg success" id="formSuccess">
+        ✦ &nbsp;Thank you — your enquiry has been received. We will be in touch soon.
+      </div>
+      <div class="form-msg error" id="formError">
+        Something went wrong. Please email us directly at juha.t@gmail.com
+      </div>
+
+      <button class="btn-sub" type="submit" id="submitBtn">Send Enquiry</button>
+    </form>
   </div>
 </section>
 
@@ -391,9 +459,47 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
 </footer>
 
 <script>
-document.getElementById("submitBtn").addEventListener("click", () => {
-  alert("Thank you — we will be in touch soon.");
-});
+(function () {
+  const form    = document.getElementById('enquiryForm');
+  const btn     = document.getElementById('submitBtn');
+  const success = document.getElementById('formSuccess');
+  const error   = document.getElementById('formError');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Hide any previous messages
+    success.classList.remove('show');
+    error.classList.remove('show');
+
+    btn.disabled    = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch('/', {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body   : new URLSearchParams(data).toString()
+      });
+
+      if (res.ok) {
+        success.classList.add('show');
+        form.reset();
+        btn.textContent = 'Sent ✦';
+        // Scroll success message into view
+        success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      error.classList.add('show');
+      btn.disabled    = false;
+      btn.textContent = 'Send Enquiry';
+    }
+  });
+})();
 </script>
+
 </body>
 </html>
