@@ -36,6 +36,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .hero-sub{margin-top:1.5rem;font-size:0.72rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(242,234,216,.7)}
 .hero-tag{margin-top:2rem;max-width:520px;margin-left:auto;margin-right:auto;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--parchment);opacity:.9;line-height:1.65}
 .hero-badge{display:inline-block;margin-top:2.5rem;border:1px solid rgba(242,234,216,.5);color:var(--parchment);font-size:0.63rem;letter-spacing:0.3em;text-transform:uppercase;padding:.6rem 1.6rem}
+.sami-badge-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;margin-top:2.5rem;width:240px;height:40px}
+.sami-half{position:absolute;width:100%;height:50%;left:0;border:2px solid transparent;box-sizing:border-box}
+.sami-half--top{top:0;border-top-color:#E8212A;border-left-color:#E8212A;border-right-color:#E8212A;transform-origin:center bottom;animation:chase-top 2.8s ease-in-out infinite}
+.sami-half--bot{bottom:0;border-bottom-color:#1D5EA8;border-left-color:#1D5EA8;border-right-color:#1D5EA8;transform-origin:center top;animation:chase-bot 2.8s ease-in-out infinite}
+@keyframes chase-top{0%{transform:translateY(-7px);opacity:.4}50%{transform:translateY(0);opacity:1}100%{transform:translateY(-7px);opacity:.4}}
+@keyframes chase-bot{0%{transform:translateY(7px);opacity:.4}50%{transform:translateY(0);opacity:1}100%{transform:translateY(7px);opacity:.4}}
+.sami-badge-text{position:relative;z-index:2;font-size:0.63rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--parchment);white-space:nowrap}
 .scroll-h{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--parchment);animation:pulse 2.5s infinite}
 @keyframes pulse{0%,100%{opacity:.25}50%{opacity:.6}}
 .scroll-h span{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase}
@@ -213,7 +220,11 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
     <h1 class="hero-title">Käsivarsi<br><em>Saami Cultural Center</em></h1>
     <p class="hero-sub">Sámi Heritage · Eanodat Region</p>
     <p class="hero-tag">A living encounter with one of the world's oldest indigenous cultures, rooted in the land and memory of the North.</p>
-    <span class="hero-badge">Opening Autumn 2026</span>
+    <div class="sami-badge-wrap">
+  <div class="sami-half sami-half--top"></div>
+  <div class="sami-half sami-half--bot"></div>
+  <span class="sami-badge-text">Opening Autumn 2026</span>
+</div>
   </div>
   <div class="scroll-h">
     <svg viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v14M3 13l5 5 5-5"/></svg>
