@@ -113,16 +113,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .ti-val{font-family:'Cormorant Garamond',serif;font-size:1.65rem;color:var(--deep);font-weight:300}
 .ti-note{font-size:.72rem;color:var(--smoke);margin-top:.3rem}
 
-/* EU */
-.eu-bg{background:var(--cream);border-top:1px solid rgba(92,74,50,.12);padding:3.5rem 3rem}
-.eu-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:3rem;flex-wrap:wrap}
-.eu-emb{flex-shrink:0;width:72px;height:72px;background:#003399;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.eu-emb svg{width:52px;height:52px}
-.eu-text{flex:1;min-width:260px}
-.eu-title-t{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--deep);margin-bottom:.6rem}
+/* EU FUNDING */
+.eu-bg{background:var(--cream);border-top:1px solid rgba(92,74,50,.12);padding:5rem 3rem}
+.eu-title-t{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--deep);margin-bottom:.5rem}
 .eu-body-t{font-size:.82rem;line-height:1.75;color:var(--smoke)}
-.eu-logos{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
-.eu-pill{border:1px solid rgba(92,74,50,.2);padding:.5rem 1.1rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);line-height:1.7}
+.eu-row{display:flex;align-items:flex-start;gap:2.5rem;flex-wrap:wrap}
+.eu-logo-box{flex-shrink:0;width:180px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(92,74,50,.12);padding:.8rem 1rem;border-radius:2px}
+.eu-logo-box--dark{background:#1a1a1a}
+.eu-logo-img{width:100%;height:auto;object-fit:contain;max-height:70px;display:block}
+.eu-logo-leader{max-height:56px}
+.eu-logo-box--large{width:300px;padding:1.2rem 1.6rem}
+.eu-logo-img--large{max-height:130px}
+.eu-row-text{flex:1;min-width:240px;padding-top:.2rem}
+.eu-divider{width:100%;height:1px;background:rgba(92,74,50,.12);margin:2.5rem 0}
+@media(max-width:600px){
+  .eu-row{flex-direction:column;gap:1.2rem}
+  .eu-logo-box{width:140px}
+}
 
 /* CONTACT */
 .con-bg{padding:7rem 3rem;background:var(--snow);border-top:1px solid rgba(92,74,50,.12)}
@@ -176,7 +183,7 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
   .con-form{grid-template-columns:1fr}
   .fg.full,.btn-sub,.form-msg{grid-column:span 1}
   .str-hdr{flex-direction:column;align-items:flex-start;gap:1.5rem}
-  .eu-inner{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  
   footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}
   .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:unset}
   .gi,.gi:nth-child(1),.gi:nth-child(2),.gi:nth-child(3),.gi:nth-child(4),.gi:nth-child(5){grid-column:span 1}
@@ -221,8 +228,8 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
       <span class="sec-label">Our Heritage</span>
       <h2 class="sec-head">A culture shaped by <em>land and sky</em></h2>
       <div class="divider"></div>
-      <p class="sec-body">The Sámi people have inhabited the Eanodat region, Enontekiö in Finnish for thousands of years. Their lifeways, language, and spiritual relationship with the fell landscape represent a living tradition of remarkable depth, carried through generations by knowledge, story, and craftsmanship.</p>
-      <p class="sec-body" style="margin-top:1rem">Kasivarsi Saami Cultural Center exists not as a museum, but as a living cultural space birthed by Juha Tornensis a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.</p>
+      <p class="sec-body">The Sámi people have inhabited the Eanodat region — Enontekiö in Finnish — for thousands of years. Their lifeways, language, and spiritual relationship with the fell landscape represent a living tradition of remarkable depth, carried through generations by knowledge, story, and craftsmanship.</p>
+      <p class="sec-body" style="margin-top:1rem">Kasivarsi Saami Cultural Center exists not as a museum, but as a living cultural space — birthed by Juha Tornensis — a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.</p>
       <p class="sec-body" style="margin-top:1rem">Through authentic structures, intimate programs, and a deep respect for Sámi knowledge, we invite you into a world shaped by reindeer, seasons, duodji, and sky.</p>
     </div>
     <div class="intro-vis">
@@ -248,7 +255,7 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
       <span class="sec-label">Family Archive</span>
       <h2 class="sec-head">Memories of <em>the North</em></h2>
       <div class="divider"></div>
-      <p class="sec-body">These photographs from the family archive span several generations, each image carries a thread of the living tradition we are entrusted to preserve.</p>
+      <p class="sec-body">These photographs from the family archive span several generations — reindeer herders, craftswomen, storytellers, and children of the fell. Each image carries a thread of the living tradition we are entrusted to preserve.</p>
     </div>
     <div class="gal-grid">
       <div class="gi"><div class="gi-img-wrap"><img src="images/1.jpg" alt="Family archive photo 1"></div></div>
@@ -286,7 +293,7 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
       <span class="sec-label" style="color:var(--ember-lt)">Phase 2 · Coming Later</span>
       <h2 class="sec-head" style="color:var(--snow)">Main Cultural <em>Building</em></h2>
       <div class="divider"></div>
-      <p class="sec-body" style="color:rgba(232,220,200,.65)">The centerpiece of Kasivarsi Saami Cultural Center a purpose-built cultural hub that will deepen every encounter with Sámi heritage, designed according to traditional principles of the North.</p>
+      <p class="sec-body" style="color:rgba(232,220,200,.65)">The centerpiece of Kasivarsi Saami Cultural Center — a purpose-built cultural hub that will deepen every encounter with Sámi heritage, designed according to traditional principles of the North.</p>
       <ul class="feat-list">
         <li>Permanent &amp; temporary Sámi heritage exhibitions</li>
         <li>Reception and cultural documentation center</li>
@@ -315,33 +322,48 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
   </div>
 </section>
 
-<!-- EU -->
+<!-- EU FUNDING -->
 <section class="eu-bg">
-  <div class="eu-inner">
-    <div class="eu-emb">
-      <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg"><g fill="#FFCC00">
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(0 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(30 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(60 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(90 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(120 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(150 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(180 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(210 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(240 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(270 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(300 26 26)"/>
-        <polygon points="26,4 27.2,7.6 30.9,7.6 28,9.8 29.1,13.4 26,11.2 22.9,13.4 24,9.8 21.1,7.6 24.8,7.6" transform="rotate(330 26 26)"/>
-      </g></svg>
+  <div style="max-width:1000px;margin:0 auto">
+    <span class="sec-label">Supported by</span>
+    
+    <!-- Row 1: EU rural funding -->
+    <div class="eu-row">
+      <div class="eu-logo-box eu-logo-box--large">
+        <img src="images/eu.jpg" alt="EU Co-funded logo" class="eu-logo-img eu-logo-img--large">
+      </div>
+      <div class="eu-row-text">
+        <div class="eu-title-t">EU Rural Funding</div>
+        <p class="eu-body-t">This project has received EU rural funding in support of cultural heritage preservation, sustainable development, and indigenous community programs in the Eanodat region of Northern Finland.</p>
+      </div>
     </div>
-    <div class="eu-text">
-      <span class="sec-label">Supported by</span>
-      <div class="eu-title-t">Co-funded by the European Union</div>
-      <p class="eu-body-t">Kasivarsi Saami Cultural Center has received support from the European Union in recognition of the importance of preserving and transmitting indigenous cultural heritage. This funding contributes to the construction of cultural structures, the development of educational programs, and the safeguarding of Sámi intangible heritage in the Eanodat region.</p>
+
+    <div class="eu-divider"></div>
+
+    <!-- Row 2: LEADER -->
+    <div class="eu-row">
+      <div class="eu-logo-box">
+        <img src="images/leader.jpg" alt="LEADER programme logo" class="eu-logo-img eu-logo-leader">
+      </div>
+      <div class="eu-row-text">
+        <div class="eu-title-t">EU Rural Funding via LEADER</div>
+        <p class="eu-body-t">This project has received EU rural funding from the LEADER programme — a community-led local development initiative supporting rural areas across Europe. LEADER funding has been instrumental in enabling the early construction and cultural programming of Kasivarsi Saami Cultural Center.</p>
+      </div>
     </div>
-    <div class="eu-logos">
-      <div class="eu-pill">European Union<br>ERDF 2021–2027</div>
+
+    <div class="eu-divider"></div>
+
+    <!-- Row 3: ELY / Elinvoimakeskus -->
+    <div class="eu-row">
+      <div class="eu-logo-box eu-logo-box--dark">
+        <img src="images/eli1.png" alt="Elinvoimakeskus logo" class="eu-logo-img">
+      </div>
+      <div class="eu-row-text">
+        <div class="eu-title-t">EU Rural Funding via Elinvoimakeskukselta</div>
+        <p class="eu-body-t">This project has received EU rural funding from Elinvoimakeskukselta (Centre for Economic Development, Transport and the Environment), supporting regional vitality, indigenous cultural infrastructure, and the long-term sustainability of the Kasivarsi Saami Cultural Center.</p>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -393,11 +415,6 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
       </div>
 
       <div class="fg">
-        <label for="f-date">Preferred Date</label>
-        <input id="f-date" type="text" name="preferred_date" placeholder="Autumn 2026 onwards">
-      </div>
-
-      <div class="fg">
         <label for="f-group">Group Type</label>
         <select id="f-group" name="group_type">
           <option value="" disabled selected>Select group type…</option>
@@ -415,18 +432,6 @@ footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-be
         <input id="f-size" type="number" name="group_size" placeholder="e.g. 12" min="1">
       </div>
 
-      <div class="fg">
-        <label for="f-lang">Preferred Language</label>
-        <select id="f-lang" name="language">
-          <option value="" disabled selected>Select language…</option>
-          <option>English</option>
-          <option>Finnish / Suomi</option>
-          <option>Swedish / Svenska</option>
-          <option>Norwegian / Norsk</option>
-          <option>Sámi</option>
-          <option>Other</option>
-        </select>
-      </div>
 
       <div class="fg full">
         <label for="f-msg">Message</label>
