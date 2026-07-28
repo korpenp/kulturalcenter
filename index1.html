@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Käsivarsi Saami Cultural Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --linen:#F2EAD8;--cream:#FAF5EC;--parchment:#E8DCC8;
+  --bark:#5C4A32;--ember:#B85A28;--ember-lt:#D4744A;
+  --deep:#2A1E10;--mid:#4A3828;--smoke:#7A6E62;
+  --snow:#FDF9F3;--aurora:#3A6A5E;--sepia:#8C6E50;
+}
+body{background:var(--cream);color:var(--mid);font-family:'Raleway',sans-serif;font-weight:300;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:rgba(250,245,236,0.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(92,74,50,0.12);gap:1rem;flex-wrap:wrap}
+.nav-logo{font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--deep);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{font-size:0.63rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--smoke);text-decoration:none;transition:color 0.3s}
+.nav-links a:hover{color:var(--ember)}
+
+/* LANG TOGGLE */
+.lang-toggle{display:flex;gap:0.35rem;align-items:center;flex-shrink:0;margin-left:.5rem}
+.lang-btn{background:none;border:none;padding:3px 2px 1px;cursor:pointer;opacity:0.35;transition:opacity .2s;line-height:1;border-bottom:2px solid transparent;display:flex;align-items:center}
+.lang-btn.active{opacity:1;border-bottom-color:var(--ember)}
+.lang-btn:hover{opacity:.75}
+.lang-btn svg{width:26px;height:17px;display:block;border-radius:1px;box-shadow:0 0 0 1px rgba(92,74,50,.15)}
+
+/* HERO */
+.hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1800&q=80') center/cover no-repeat;filter:brightness(0.55) saturate(0.65) sepia(0.2);transform:scale(1.04);animation:zoom 22s ease-out forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(42,30,16,.15) 0%,rgba(42,30,16,.55) 80%,var(--cream) 100%)}
+.hero-c{position:relative;z-index:2;text-align:center;padding:0 2rem;animation:up 1.4s ease-out both}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.hero-eye{font-size:0.65rem;letter-spacing:0.45em;text-transform:uppercase;color:var(--parchment);margin-bottom:1.5rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:300;line-height:0.95;color:var(--snow)}
+.hero-title em{font-style:italic;color:var(--parchment)}
+.hero-sub{margin-top:1.5rem;font-size:0.72rem;letter-spacing:0.35em;text-transform:uppercase;color:rgba(242,234,216,.7)}
+.hero-tag{margin-top:2rem;max-width:520px;margin-left:auto;margin-right:auto;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--parchment);opacity:.9;line-height:1.65}
+.sami-badge-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;margin-top:2.5rem;width:240px;height:40px}
+.sami-half{position:absolute;width:100%;height:50%;left:0;border:2px solid transparent;box-sizing:border-box}
+.sami-half--top{top:0;border-top-color:#E8212A;border-left-color:#E8212A;border-right-color:#E8212A;transform-origin:center bottom;animation:chase-top 2.8s ease-in-out infinite}
+.sami-half--bot{bottom:0;border-bottom-color:#1D5EA8;border-left-color:#1D5EA8;border-right-color:#1D5EA8;transform-origin:center top;animation:chase-bot 2.8s ease-in-out infinite}
+@keyframes chase-top{0%{transform:translateY(-7px);opacity:.4}50%{transform:translateY(0);opacity:1}100%{transform:translateY(-7px);opacity:.4}}
+@keyframes chase-bot{0%{transform:translateY(7px);opacity:.4}50%{transform:translateY(0);opacity:1}100%{transform:translateY(7px);opacity:.4}}
+.sami-badge-text{position:relative;z-index:2;font-size:0.63rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--parchment);white-space:nowrap}
+.scroll-h{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--parchment);animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:.6}}
+.scroll-h span{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase}
+.scroll-h svg{width:16px}
+
+/* SECTIONS */
+.sec-wrap{padding:7rem 3rem;max-width:1200px;margin:0 auto}
+.sec-label{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--ember);margin-bottom:1.2rem;display:block}
+.sec-head{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:300;line-height:1.15;color:var(--deep)}
+.sec-head em{font-style:italic;color:var(--ember)}
+.sec-body{font-size:.95rem;line-height:1.9;color:var(--smoke);margin-top:1.4rem}
+.divider{width:50px;height:1px;background:var(--ember);margin:1.8rem 0}
+
+/* INTRO GRID */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.intro-vis{position:relative}
+.intro-img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:sepia(.25) brightness(.9)}
+.intro-acc{position:absolute;bottom:-2rem;left:-2rem;width:110px;height:110px;border:1px solid var(--ember);opacity:.35}
+.intro-cap{position:absolute;bottom:1rem;right:-1rem;writing-mode:vertical-rl;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--smoke);opacity:.6}
+
+/* QUOTE */
+.quote-band{background:var(--bark);padding:5rem 3rem;text-align:center}
+.quote-band blockquote{max-width:780px;margin:0 auto;font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;font-style:italic;color:var(--linen);line-height:1.55}
+.quote-band cite{display:block;margin-top:1.5rem;font-family:'Raleway',sans-serif;font-style:normal;font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--parchment);opacity:.55}
+
+/* GALLERY */
+.gal-bg{background:var(--linen);padding:7rem 3rem}
+.gal-intro{max-width:560px;margin-bottom:4rem}
+.gal-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto auto;gap:6px}
+.gi{position:relative;background:var(--sepia);cursor:pointer;display:flex;flex-direction:column}
+.gi:nth-child(1){grid-column:span 5;grid-row:span 2}
+.gi:nth-child(2){grid-column:span 4}
+.gi:nth-child(3){grid-column:span 3}
+.gi:nth-child(4){grid-column:span 3}
+.gi:nth-child(5){grid-column:span 4}
+.gi-img-wrap{position:relative;overflow:hidden;flex:1}
+.gi-img-wrap::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 40px rgba(92,74,50,.35);pointer-events:none}
+.gi img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block;filter:sepia(.55) contrast(.9) brightness(.88);transition:filter .6s,transform .7s}
+.gi:nth-child(1) img{min-height:460px}
+.gi:hover img{filter:sepia(.3) contrast(.95) brightness(.95);transform:scale(1.03)}
+.gi-cap{padding:.7rem .9rem .6rem;background:var(--bark);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--parchment);line-height:1.6;flex-shrink:0}
+.gal-note{max-width:1200px;margin:2.5rem auto 0;font-size:.72rem;color:var(--smoke);font-style:italic;border-left:2px solid var(--ember);padding-left:1rem;line-height:1.7}
+
+/* STRUCTURES */
+.str-bg{background:var(--snow);padding:7rem 3rem;border-top:1px solid rgba(92,74,50,.12)}
+.str-hdr{max-width:1200px;margin:0 auto 5rem;display:flex;justify-content:space-between;align-items:flex-end}
+.avail{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--aurora);border:1px solid var(--aurora);padding:.5rem 1.2rem;white-space:nowrap}
+.str-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:4px}
+.sc{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:pointer;background:var(--bark)}
+.sc img{width:100%;height:100%;object-fit:cover;transition:transform .8s,filter .5s;filter:brightness(.75) saturate(.7) sepia(.1)}
+.sc:hover img{transform:scale(1.04);filter:brightness(.6) saturate(.75)}
+.sc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,30,16,.88),transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem}
+.sc-num{font-family:'Cormorant Garamond',serif;font-size:.78rem;color:var(--ember-lt);letter-spacing:.2em;margin-bottom:.3rem}
+.sc-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--snow);line-height:1.1}
+.sc-sub{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);margin-top:.3rem;opacity:.7}
+.sc-desc{font-size:.82rem;line-height:1.65;color:var(--parchment);margin-top:.7rem;max-width:420px;opacity:.85}
+
+/* COMING */
+.com-bg{padding:7rem 3rem;background:var(--deep);position:relative;overflow:hidden}
+.com-bg::before{content:'PHASE 2';position:absolute;right:-3rem;top:50%;transform:translateY(-50%) rotate(90deg);font-family:'Cinzel',serif;font-size:8rem;font-weight:600;color:var(--bark);opacity:.18;letter-spacing:.3em;pointer-events:none}
+.com-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.feat-list{list-style:none;margin-top:2rem;display:flex;flex-direction:column;gap:1rem}
+.feat-list li{display:flex;align-items:flex-start;gap:1rem;font-size:.9rem;color:rgba(232,220,200,.6);line-height:1.5}
+.feat-list li::before{content:'—';color:var(--ember);flex-shrink:0;margin-top:1px}
+.com-vis{position:relative}
+.com-vis img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:sepia(.35) brightness(.55)}
+.com-badge{position:absolute;top:1.5rem;left:1.5rem;background:var(--ember);color:white;font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;padding:.4rem 1rem}
+
+/* VISIT */
+.vis-bg{background:var(--parchment);padding:6rem 3rem;border-top:1px solid rgba(92,74,50,.15)}
+.vis-inner{max-width:900px;margin:0 auto;text-align:center}
+.tour-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:4rem}
+.ti{border-top:1px solid rgba(92,74,50,.25);padding-top:1.5rem;text-align:left}
+.ti-lbl{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--smoke);margin-bottom:.5rem}
+.ti-val{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--deep);font-weight:300}
+.ti-note{font-size:.72rem;color:var(--smoke);margin-top:.3rem}
+
+/* GETTING HERE */
+.here-bg{background:var(--cream);padding:7rem 3rem;border-top:1px solid rgba(92,74,50,.12)}
+.here-intro{max-width:560px;margin-bottom:4rem}
+.here-routes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto 2rem}
+.route-card{background:var(--snow);border-top:3px solid var(--ember);padding:2rem 1.5rem}
+.route-country{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--deep);margin-bottom:1.2rem;font-weight:500;display:flex;align-items:center;gap:.6rem}
+.route-country span{font-size:1.15rem;line-height:1}
+.route-rows{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.2rem}
+.route-row{display:flex;gap:.9rem;align-items:flex-start;font-size:.8rem;color:var(--smoke);line-height:1.5}
+.route-lbl{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);min-width:72px;flex-shrink:0;padding-top:3px;font-weight:500}
+.route-lbl a,.route-row a{color:var(--ember);text-decoration:none}
+.route-lbl a:hover,.route-row a:hover{text-decoration:underline}
+.route-time{display:inline-block;background:var(--bark);color:var(--parchment);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;padding:.38rem .9rem}
+.route-note{margin-top:.9rem;font-size:.72rem;color:var(--bark);border-left:2px solid var(--ember);padding-left:.75rem;line-height:1.55;font-style:italic}
+.here-advisory{max-width:1200px;margin:0 auto 1.5rem;display:flex;gap:1.5rem;align-items:flex-start;background:rgba(232,220,200,.5);border-left:3px solid var(--bark);padding:1.5rem 2rem}
+.advisory-icon{font-size:1.1rem;flex-shrink:0;color:var(--bark);margin-top:3px}
+.advisory-title{font-size:.63rem;letter-spacing:.24em;text-transform:uppercase;color:var(--bark);margin-bottom:.4rem;font-weight:500}
+.advisory-body{font-size:.82rem;color:var(--smoke);line-height:1.65}
+.advisory-body a{color:var(--ember);text-decoration:none}
+.advisory-body a:hover{text-decoration:underline}
+.here-stay{max-width:1200px;margin:0 auto;display:flex;gap:2rem;align-items:center;background:var(--bark);padding:2rem 2.5rem}
+.stay-icon{font-size:1.6rem;flex-shrink:0;color:var(--parchment);opacity:.65}
+.stay-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--snow);margin-bottom:.4rem}
+.stay-body{font-size:.82rem;color:var(--parchment);line-height:1.65;opacity:.85}
+
+/* EU FUNDING */
+.eu-bg{background:var(--linen);border-top:1px solid rgba(92,74,50,.12);padding:5rem 3rem}
+.eu-title-t{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--deep);margin-bottom:.5rem}
+.eu-body-t{font-size:.82rem;line-height:1.75;color:var(--smoke)}
+.eu-row{display:flex;align-items:flex-start;gap:2.5rem;flex-wrap:wrap}
+.eu-logo-box{flex-shrink:0;width:180px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(92,74,50,.12);padding:.8rem 1rem;border-radius:2px}
+.eu-logo-box--dark{background:#1a1a1a}
+.eu-logo-img{width:100%;height:auto;object-fit:contain;max-height:70px;display:block}
+.eu-logo-leader{max-height:56px}
+.eu-logo-box--large{width:300px;padding:1.2rem 1.6rem}
+.eu-logo-img--large{max-height:130px}
+.eu-row-text{flex:1;min-width:240px;padding-top:.2rem}
+.eu-divider{width:100%;height:1px;background:rgba(92,74,50,.12);margin:2.5rem 0}
+
+/* CONTACT */
+.con-bg{padding:7rem 3rem;background:var(--snow);border-top:1px solid rgba(92,74,50,.12)}
+.con-inner{max-width:700px;margin:0 auto;text-align:center}
+.logo-mark{width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid var(--ember);border-radius:50%;margin-bottom:1.5rem}
+.logo-mark svg{width:26px;height:26px}
+.con-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;text-align:left;margin-top:2rem}
+.fg{display:flex;flex-direction:column;gap:.4rem}
+.fg.full{grid-column:span 2}
+.fg label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--smoke)}
+.fg input,.fg textarea,.fg select{background:transparent;border:none;border-bottom:1px solid rgba(92,74,50,.3);color:var(--mid);font-family:'Raleway',sans-serif;font-size:.9rem;padding:.7rem 0;outline:none;transition:border-color .3s;width:100%;-webkit-appearance:none;appearance:none}
+.fg select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237A6E62' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:1.5rem}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--ember)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(122,110,98,.45)}
+.fg textarea{resize:none;height:100px}
+.ohnohoney{display:none !important;position:absolute;left:-9999px}
+.btn-sub{grid-column:span 2;margin-top:1rem;background:var(--ember);color:white;border:none;cursor:pointer;font-family:'Raleway',sans-serif;font-weight:500;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;padding:1rem 2.5rem;transition:background .3s,opacity .3s;position:relative}
+.btn-sub:hover{background:#963e16}
+.btn-sub:disabled{opacity:.6;cursor:not-allowed}
+.form-msg{grid-column:span 2;padding:1rem 1.2rem;font-size:.8rem;letter-spacing:.08em;line-height:1.6;display:none}
+.form-msg.success{border:1px solid var(--aurora);color:var(--aurora);background:rgba(58,106,94,.07)}
+.form-msg.error{border:1px solid var(--ember);color:var(--ember);background:rgba(184,90,40,.06)}
+.form-msg.show{display:block}
+
+/* FOOTER */
+footer{background:var(--deep);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.f-logo{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.2em;color:var(--parchment);opacity:.6}
+.f-meta{font-size:.62rem;color:rgba(232,220,200,.25);letter-spacing:.15em}
+.f-links{display:flex;gap:2rem}
+.f-links a{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);text-decoration:none;opacity:.4;transition:opacity .3s}
+.f-links a:hover{opacity:.9}
+.f-social{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(232,220,200,.22);font-style:italic}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .tour-grid{grid-template-columns:repeat(2,1fr)}
+  .here-routes{grid-template-columns:1fr 1fr}
+}
+@media(max-width:900px){
+  .gi:nth-child(1){grid-column:span 12;grid-row:1}
+  .gi:nth-child(1) img{height:280px;min-height:280px}
+  .gi:nth-child(2){grid-column:span 6;grid-row:2}
+  .gi:nth-child(3){grid-column:span 6;grid-row:2}
+  .gi:nth-child(4){grid-column:span 6;grid-row:3}
+  .gi:nth-child(5){grid-column:span 4;grid-row:3}
+}
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .intro-grid,.com-inner{grid-template-columns:1fr;gap:3rem}
+  .str-grid{grid-template-columns:1fr}
+  .tour-grid{grid-template-columns:1fr 1fr}
+  .here-routes{grid-template-columns:1fr}
+  .con-form{grid-template-columns:1fr}
+  .fg.full,.btn-sub,.form-msg{grid-column:span 1}
+  .str-hdr{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}
+  .gi img{height:180px}
+  .gi:nth-child(1){grid-column:span 12;grid-row:1}
+  .gi:nth-child(1) img{height:240px;min-height:240px}
+  .gi:nth-child(2),.gi:nth-child(3){grid-column:span 6;grid-row:2}
+  .gi:nth-child(4),.gi:nth-child(5){grid-column:span 6;grid-row:3}
+  .sec-wrap,.gal-bg,.str-bg,.com-bg,.vis-bg,.here-bg,.eu-bg,.con-bg{padding:4rem 1.5rem}
+  .here-stay{flex-direction:column;gap:1rem;padding:1.5rem}
+  .here-advisory{padding:1.2rem 1.5rem}
+}
+@media(max-width:600px){
+  .eu-row{flex-direction:column;gap:1.2rem}
+  .eu-logo-box{width:140px}
+  .tour-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Käsivarsi</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.heritage">Heritage</a></li>
+    <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="#structures" data-i18n="nav.structures">Structures</a></li>
+    <li><a href="#visit" data-i18n="nav.visit">Visit</a></li>
+    <li><a href="#getting-here" data-i18n="nav.here">Getting Here</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <!-- English / UK flag -->
+    <button class="lang-btn active" data-lang="en" title="English" aria-label="English">
+      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+        <rect width="30" height="20" fill="#012169"/>
+        <path d="M0,0 L30,20 M30,0 L0,20" stroke="#fff" stroke-width="4"/>
+        <path d="M0,0 L30,20 M30,0 L0,20" stroke="#C8102E" stroke-width="2.4"/>
+        <rect x="12.5" y="0" width="5" height="20" fill="#fff"/>
+        <rect x="0" y="7.5" width="30" height="5" fill="#fff"/>
+        <rect x="13.5" y="0" width="3" height="20" fill="#C8102E"/>
+        <rect x="0" y="8.5" width="30" height="3" fill="#C8102E"/>
+      </svg>
+    </button>
+    <!-- Finnish flag -->
+    <button class="lang-btn" data-lang="fi" title="Suomi" aria-label="Suomi">
+      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+        <rect width="30" height="20" fill="#fff"/>
+        <rect y="7.5" width="30" height="5" fill="#003580"/>
+        <rect x="9" width="5" height="20" fill="#003580"/>
+      </svg>
+    </button>
+    <!-- Sámi flag -->
+    <button class="lang-btn" data-lang="se" title="Davvisámegiella" aria-label="Davvisámegiella">
+      <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+        <rect y="0" width="30" height="5" fill="#BE1622"/>
+        <rect y="5" width="30" height="5" fill="#006B3F"/>
+        <rect y="10" width="30" height="5" fill="#F9C700"/>
+        <rect y="15" width="30" height="5" fill="#003087"/>
+        <circle cx="10" cy="10" r="6.5" fill="#fff"/>
+        <path d="M 10 3.5 A 6.5 6.5 0 0 0 10 16.5 Z" fill="#003087"/>
+        <path d="M 10 3.5 A 6.5 6.5 0 0 1 10 16.5 Z" fill="#BE1622"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-c">
+    <div class="hero-eye" data-i18n="hero.eye">Kilpisjärvi · Finland · Enontekiö · 69°N</div>
+    <h1 class="hero-title">Käsivarsi<br><em>Saami Cultural Center</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">Sámi Heritage · Eanodat Region</p>
+    <p class="hero-tag" data-i18n="hero.tag">A living encounter with one of the world's oldest indigenous cultures, rooted in the land and memory of the North.</p>
+    <div class="sami-badge-wrap">
+      <div class="sami-half sami-half--top"></div>
+      <div class="sami-half sami-half--bot"></div>
+      <span class="sami-badge-text" data-i18n="hero.badge">Opening Autumn 2026</span>
+    </div>
+  </div>
+  <div class="scroll-h">
+    <svg viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v14M3 13l5 5 5-5"/></svg>
+    <span data-i18n="hero.scroll">Discover</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--cream)">
+  <div class="sec-wrap intro-grid">
+    <div>
+      <span class="sec-label" data-i18n="about.label">Our Heritage</span>
+      <h2 class="sec-head" data-i18n="about.heading">A culture shaped by <em>land and sky</em></h2>
+      <div class="divider"></div>
+      <p class="sec-body" data-i18n="about.p1">The Sámi people have inhabited the Eanodat region, Enontekiö in Finnish, for thousands of years. Their lifeways, language, and spiritual relationship with the fell landscape represent a living tradition of remarkable depth, carried through generations by knowledge, story, and craftsmanship.</p>
+      <p class="sec-body" style="margin-top:1rem" data-i18n="about.p2">Kasivarsi Saami Cultural Center exists not as a museum, but as a living cultural space birthed by Juha Tornensis — a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.</p>
+      <p class="sec-body" style="margin-top:1rem" data-i18n="about.p3">Through authentic structures, intimate programs, and a deep respect for Sámi knowledge, we invite you into a world shaped by reindeer, seasons, duodji, and sky.</p>
+    </div>
+    <div class="intro-vis">
+      <img class="intro-img" src="images/juha.jpeg" alt="Juha Tornensis">
+      <div class="intro-acc"></div>
+      <div class="intro-cap">Kilpisjärvi · 69°N</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote>
+    <span data-i18n="quote.text">"The land does not belong to us — we belong to the land. This is something our grandparents knew, and their grandparents before them."</span>
+    <cite data-i18n="quote.cite">— Sámi oral tradition, Eanodat region</cite>
+  </blockquote>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery" class="gal-bg">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="gal-intro">
+      <span class="sec-label">Family Archive</span>
+      <h2 class="sec-head">Memories of <em>the North</em></h2>
+      <div class="divider"></div>
+      <p class="sec-body">These photographs from the family archive span several generations reindeer herders, craftswomen, storytellers, and children of the fell. Each image carries a thread of the living tradition we are entrusted to preserve.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gi"><div class="gi-img-wrap"><img src="images/1.jpg" alt="Family archive photo 1"></div></div>
+      <div class="gi"><div class="gi-img-wrap"><img src="images/2.jpg" alt="Family archive photo 2"></div></div>
+      <div class="gi"><div class="gi-img-wrap"><img src="images/3.jpg" alt="Family archive photo 3"></div></div>
+      <div class="gi"><div class="gi-img-wrap"><img src="images/4.jpg" alt="Family archive photo 4"></div></div>
+      <div class="gi"><div class="gi-img-wrap"><img src="images/5.jpg" alt="Family archive photo 5"></div></div>
+    </div>
+    <p class="gal-note">Images from the family archive of the founding family. Each photograph is a window into the living tradition of the Sámi people, capturing moments of daily life, seasonal change, and the enduring relationship with the land that defines our heritage.</p>
+  </div>
+</section>
+
+<!-- STRUCTURES -->
+<section id="structures" class="str-bg">
+  <div class="str-hdr">
+    <div>
+      <span class="sec-label" data-i18n="str.label">The Living Grounds · Available from Autumn 2026</span>
+      <h2 class="sec-head" data-i18n="str.heading">Authentic <em>Structures</em></h2>
+    </div>
+    <div class="avail" data-i18n="str.avail">Structures 2–5 Ready</div>
+  </div>
+  <div class="str-grid">
+    <div class="sc"><img src="images/kota1.png" alt="Goahti">
+      <div class="sc-ov">
+        <div class="sc-num">02</div>
+        <div class="sc-title" data-i18n="sc2.title">Korvakota / <em>Goahti</em></div>
+        <div class="sc-sub" data-i18n="sc2.sub">Traditional Sámi Dwelling</div>
+        <p class="sc-desc" data-i18n="sc2.desc">An authentic turf-and-timber home used by generations of Sámi families. Experience the intimate warmth of a fire at the hearth, surrounded by centuries of living tradition.</p>
+      </div>
+    </div>
+    <div class="sc"><img src="images/laavu.jpeg" alt="Laavu">
+      <div class="sc-ov">
+        <div class="sc-num">03</div>
+        <div class="sc-title" data-i18n="sc3.title">Laavu</div>
+        <div class="sc-sub" data-i18n="sc3.sub">Open Wilderness Shelter</div>
+        <p class="sc-desc" data-i18n="sc3.desc">Open to the elements and the sky, the laavu is the setting for fire-cooked meals, oral storytelling, and deep encounter with the Arctic landscape in its rawest form.</p>
+      </div>
+    </div>
+    <div class="sc"><img src="images/suonjir.jpg" alt="Suonjir">
+      <div class="sc-ov">
+        <div class="sc-num">04</div>
+        <div class="sc-title" data-i18n="sc4.title">Suonjir</div>
+        <div class="sc-sub" data-i18n="sc4.sub">Elevated Storage Rack</div>
+        <p class="sc-desc" data-i18n="sc4.desc">A traditional raised rack demonstrating the Sámi art of preservation and survival in the subarctic. A testament to ingenuity shaped entirely by the land itself.</p>
+      </div>
+    </div>
+    <div class="sc"><img src="https://images.unsplash.com/photo-1478827387698-1527781a4887?w=800&q=80" alt="Big Korvakota">
+      <div class="sc-ov">
+        <div class="sc-num">05</div>
+        <div class="sc-title" data-i18n="sc5.title">Big Korvakota</div>
+        <div class="sc-sub" data-i18n="sc5.sub">Community Gathering Space · Already on Site</div>
+        <p class="sc-desc" data-i18n="sc5.desc">Our largest gathering kota already standing at Kilpisjärvi. A spacious space for group programs, cultural events, and community occasions. The heart of the grounds.</p>
+      </div>
+    </div>
+  </div>
+  <p class="gal-note" style="max-width:1200px;margin:2.5rem auto 0" data-i18n="str.note"><strong>Images are representative only — main authentic structures to be built.</strong></p>
+</section>
+
+<!-- COMING -->
+<section class="com-bg">
+  <div class="com-inner">
+    <div>
+      <span class="sec-label" style="color:var(--ember-lt)" data-i18n="com.label">Phase 2 · Coming Later</span>
+      <h2 class="sec-head" style="color:var(--snow)" data-i18n="com.heading">Main Cultural <em>Building</em></h2>
+      <div class="divider"></div>
+      <p class="sec-body" style="color:rgba(232,220,200,.65)" data-i18n="com.body">The centerpiece of Kasivarsi Saami Cultural Center — a purpose-built cultural hub that will deepen every encounter with Sámi heritage, designed according to traditional principles of the North.</p>
+      <ul class="feat-list">
+        <li data-i18n="com.f1">Permanent &amp; temporary Sámi heritage exhibitions</li>
+        <li data-i18n="com.f2">Reception and cultural documentation center</li>
+        <li data-i18n="com.f3">Multipurpose hall up to 60 guests</li>
+        <li data-i18n="com.f4">Dining experiences rooted in Arctic culinary tradition</li>
+      </ul>
+    </div>
+    <div class="com-vis">
+      <img src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80" alt="">
+      <div class="com-badge" data-i18n="com.badge">Coming in Phase 2</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="vis-bg">
+  <div class="vis-inner">
+    <span class="sec-label" data-i18n="vis.label">Come and Experience</span>
+    <h2 class="sec-head" data-i18n="vis.heading">Guided <em>Programs</em></h2>
+    <p class="sec-body" style="opacity:.7;margin-top:1rem;max-width:560px;margin-left:auto;margin-right:auto" data-i18n="vis.body">An intimate, expert-led encounter with the living heritage of the Sámi people — their structures, their knowledge systems, and their enduring relationship with the Arctic land.</p>
+    <div class="tour-grid">
+      <div class="ti">
+        <div class="ti-lbl" data-i18n="vis.type.lbl">Program Type</div>
+        <div class="ti-val" data-i18n="vis.type.val">Guided</div>
+        <div class="ti-note" data-i18n="vis.type.note">Led by a Sámi cultural guide</div>
+      </div>
+      <div class="ti">
+        <div class="ti-lbl" data-i18n="vis.dur.lbl">Duration</div>
+        <div class="ti-val" data-i18n="vis.dur.val">~1 Hour</div>
+        <div class="ti-note" data-i18n="vis.dur.note">Extended programs available</div>
+      </div>
+      <div class="ti">
+        <div class="ti-lbl" data-i18n="vis.grp.lbl">Groups</div>
+        <div class="ti-val" data-i18n="vis.grp.val">Min. 10</div>
+        <div class="ti-note" data-i18n="vis.grp.note">Contact us for group pricing</div>
+      </div>
+      <div class="ti">
+        <div class="ti-lbl" data-i18n="vis.sea.lbl">Season</div>
+        <div class="ti-val" data-i18n="vis.sea.val">Year-Round</div>
+        <div class="ti-note" data-i18n="vis.sea.note">Open throughout the year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GETTING HERE -->
+<section id="getting-here" class="here-bg">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="here-intro">
+      <span class="sec-label" data-i18n="here.label">Getting Here</span>
+      <h2 class="sec-head" data-i18n="here.heading">Your Journey to <em>69°N</em></h2>
+      <div class="divider"></div>
+      <p class="sec-body" data-i18n="here.body">We are located in Kilpisjärvi, directly in front of Cahkal Hotels, on road E8. Kilpisjärvi is remote — and that is precisely what makes it extraordinary. The journey to the far North is part of the experience.</p>
+    </div>
+
+    <div class="here-routes">
+
+      <!-- Route 1: Tromsø -->
+      <div class="route-card">
+        <div class="route-country">
+          <span>🇳🇴</span>
+          <span data-i18n="here.r1.title">Via Tromsø, Norway</span>
+        </div>
+        <div class="route-rows">
+          <div class="route-row">
+            <span class="route-lbl" data-i18n="here.item.airport">Airport</span>
+            <span>Tromsø Airport Langnes (TOS)</span>
+          </div>
+          <div class="route-row">
+            <span class="route-lbl" data-i18n="here.item.bus">Bus</span>
+            <span data-i18n="here.r1.bus">Bussring — <a href="https://www.bussring.no/" target="_blank" rel="noopener">bussring.no</a></span>
+          </div>
+        </div>
+        <div class="route-time" data-i18n="here.r1.time">~ 1.5 hours</div>
+        <div class="route-note" data-i18n="here.r1.note">Tromsø is in Norway. Please ensure you hold the appropriate visa to enter Finland from here.</div>
+      </div>
+
+      <!-- Route 2: Kittilä -->
+      <div class="route-card">
+        <div class="route-country">
+          <span>🇫🇮</span>
+          <span data-i18n="here.r2.title">Via Kittilä, Finland</span>
+        </div>
+        <div class="route-rows">
+          <div class="route-row">
+            <span class="route-lbl" data-i18n="here.item.airport">Airport</span>
+            <span>Kittilä Airport (KTT)</span>
+          </div>
+          <div class="route-row">
+            <span class="route-lbl" data-i18n="here.item.bus">Bus</span>
+            <span data-i18n="here.r2.bus">Check connections at <a href="https://www.eskelisen.fi/" target="_blank" rel="noopener">eskelisen.fi</a></span>
+          </div>
+        </div>
+        <div class="route-time" data-i18n="here.r2.time">~ 2.5 hours</div>
+      </div>
+
+      <!-- Route 3: Rovaniemi -->
+      <div class="route-card">
+        <div class="route-country">
+          <span>🇫🇮</span>
+          <span data-i18n="here.r3.title">Via Rovaniemi, Finland</span>
+        </div>
+        <div class="route-rows">
+          <div class="route-row">
+            <span class="route-lbl" data-i18n="here.item.transport">To Rovaniemi</span>
+            <span data-i18n="here.r3.transport">Fly or take the train</span>
+          </div>
+          <div class="route-row">
+            <span class="route-lbl" data-i18n="here.item.bus">Bus</span>
+            <span data-i18n="here.r3.bus">Eskelisen Lapin Linjat — <a href="https://www.eskelisen.fi/" target="_blank" rel="noopener">eskelisen.fi</a></span>
+          </div>
+        </div>
+        <div class="route-time" data-i18n="here.r3.time">~ 5 hours</div>
+      </div>
+
+    </div>
+
+    <!-- E8 Road Advisory -->
+    <div class="here-advisory">
+      <div class="advisory-icon">⚠</div>
+      <div>
+        <div class="advisory-title" data-i18n="here.road.title">E8 — The Only Road</div>
+        <p class="advisory-body" data-i18n="here.road.body">Road E8 is the sole route into Kilpisjärvi. In winter, conditions can be demanding. Check road conditions via <a href="https://www.fintraffic.fi/en" target="_blank" rel="noopener">Fintraffic</a> before you travel.</p>
+      </div>
+    </div>
+
+    <!-- Where to Stay -->
+    <div class="here-stay">
+      <div class="stay-icon">⌂</div>
+      <div>
+        <div class="stay-title" data-i18n="here.stay.title">Where to Stay</div>
+        <p class="stay-body" data-i18n="here.stay.body">Cahkal Hotels is located directly in front of the cultural center on the shores of Lake Kilpisjärvi — an ideal base for experiencing the Arctic North.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EU FUNDING -->
+<section class="eu-bg">
+  <div style="max-width:1000px;margin:0 auto">
+    <span class="sec-label" data-i18n="eu.label">Supported by</span>
+    <div class="eu-row">
+      <div class="eu-logo-box eu-logo-box--large">
+        <img src="images/eu.jpg" alt="EU Co-funded logo" class="eu-logo-img eu-logo-img--large">
+      </div>
+      <div class="eu-row-text">
+        <div class="eu-title-t" data-i18n="eu.r1.title">EU Rural Funding</div>
+        <p class="eu-body-t" data-i18n="eu.r1.body">This project has received EU rural funding in support of cultural heritage preservation, sustainable development, and indigenous community programs in the Eanodat region of Northern Finland.</p>
+      </div>
+    </div>
+    <div class="eu-divider"></div>
+    <div class="eu-row">
+      <div class="eu-logo-box">
+        <img src="images/leader.jpg" alt="LEADER programme logo" class="eu-logo-img eu-logo-leader">
+      </div>
+      <div class="eu-row-text">
+        <div class="eu-title-t" data-i18n="eu.r2.title">EU Rural Funding via LEADER</div>
+        <p class="eu-body-t" data-i18n="eu.r2.body">This project has received EU rural funding from the LEADER programme — a community-led local development initiative supporting rural areas across Europe. LEADER funding has been instrumental in enabling the early construction and cultural programming of Kasivarsi Saami Cultural Center.</p>
+      </div>
+    </div>
+    <div class="eu-divider"></div>
+    <div class="eu-row">
+      <div class="eu-logo-box eu-logo-box--dark">
+        <img src="images/eli1.png" alt="Elinvoimakeskus logo" class="eu-logo-img">
+      </div>
+      <div class="eu-row-text">
+        <div class="eu-title-t" data-i18n="eu.r3.title">EU Rural Funding via Elinvoimakeskukselta</div>
+        <p class="eu-body-t" data-i18n="eu.r3.body">This project has received EU rural funding from Elinvoimakeskukselta (Centre for Economic Development, Transport and the Environment), supporting regional vitality, indigenous cultural infrastructure, and the long-term sustainability of the Kasivarsi Saami Cultural Center.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="con-bg">
+  <div class="con-inner">
+    <div class="logo-mark"><svg viewBox="0 0 26 26" fill="none"><polygon points="13,2 24,20 2,20" stroke="#B85A28" stroke-width="1.5" fill="none"/><circle cx="13" cy="13" r="3" fill="#B85A28" opacity="0.7"/></svg></div>
+    <span class="sec-label" style="color:var(--ember)" data-i18n="con.label">Plan Your Visit</span>
+    <h2 class="sec-head" data-i18n="con.heading">Get in <em>Touch</em></h2>
+    <p class="sec-body" data-i18n="con.body">For program bookings, group inquiries, or to learn more about the center and our cultural mission, reach out. We welcome schools, cultural organisations, and all who wish to learn.</p>
+    <form class="con-form" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="enquiryForm">
+      <input type="hidden" name="form-name" value="enquiry">
+      <div class="ohnohoney"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></div>
+      <div class="fg">
+        <label for="f-name" data-i18n="form.name">Name</label>
+        <input id="f-name" type="text" name="name" required data-i18n-placeholder="form.name.ph" placeholder="Your name">
+      </div>
+      <div class="fg">
+        <label for="f-email" data-i18n="form.email">Email</label>
+        <input id="f-email" type="email" name="email" required data-i18n-placeholder="form.email.ph" placeholder="your@email.com">
+      </div>
+      <div class="fg">
+        <label for="f-group" data-i18n="form.group">Group Type</label>
+        <select id="f-group" name="group_type">
+          <option value="" disabled selected data-i18n="form.group.ph">Select group type…</option>
+          <option data-i18n="form.opt.school">School / Education</option>
+          <option data-i18n="form.opt.cultural">Cultural Organisation</option>
+          <option data-i18n="form.opt.corporate">Corporate / Team</option>
+          <option data-i18n="form.opt.family">Family</option>
+          <option data-i18n="form.opt.individual">Individual</option>
+          <option data-i18n="form.opt.other">Other</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label for="f-size" data-i18n="form.size">Group Size</label>
+        <input id="f-size" type="number" name="group_size" min="1" data-i18n-placeholder="form.size.ph" placeholder="e.g. 12">
+      </div>
+      <div class="fg full">
+        <label for="f-msg" data-i18n="form.msg">Message</label>
+        <textarea id="f-msg" name="message" required data-i18n-placeholder="form.msg.ph" placeholder="Tell us about your group or what brings you here…"></textarea>
+      </div>
+      <div class="form-msg success" id="formSuccess" data-i18n="form.success">✦ &nbsp;Thank you — your enquiry has been received. We will be in touch soon.</div>
+      <div class="form-msg error" id="formError" data-i18n="form.error">Something went wrong. Please email us directly at Kasivarsisaamicenter@proton.me</div>
+      <button class="btn-sub" type="submit" id="submitBtn" data-i18n="form.submit">Send Enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Kasivarsi Saami Cultural Center</div>
+  <div class="f-links">
+    <a href="#about" data-i18n="nav.heritage">Heritage</a>
+    <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+    <a href="#structures" data-i18n="nav.structures">Structures</a>
+    <a href="#visit" data-i18n="nav.visit">Visit</a>
+    <a href="#getting-here" data-i18n="nav.here">Getting Here</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </div>
+  <div class="f-social" data-i18n="footer.social">Follow us · Social media coming soon</div>
+  <div class="f-meta" data-i18n="footer.meta">Kilpisjärvi · Eanodat · 69°N · Co-funded by the European Union</div>
+</footer>
+
+<script>
+// ─── TRANSLATIONS ─────────────────────────────────────────────────────────────
+// Northern Sámi (Davvisámegiella) translations are AI-generated.
+// Please have a qualified Sámi language professional review before publishing.
+const i18n = {
+  en: {
+    "nav.heritage":"Heritage","nav.gallery":"Gallery","nav.structures":"Structures",
+    "nav.visit":"Visit","nav.here":"Getting Here","nav.contact":"Contact",
+    "hero.eye":"Kilpisjärvi · Finland · Enontekiö · 69°N",
+    "hero.sub":"Sámi Heritage · Eanodat Region",
+    "hero.tag":"A living encounter with one of the world's oldest indigenous cultures, rooted in the land and memory of the North.",
+    "hero.badge":"Opening Autumn 2026","hero.scroll":"Discover",
+    "about.label":"Our Heritage",
+    "about.heading":"A culture shaped by <em>land and sky</em>",
+    "about.p1":"The Sámi people have inhabited the Eanodat region, Enontekiö in Finnish, for thousands of years. Their lifeways, language, and spiritual relationship with the fell landscape represent a living tradition of remarkable depth, carried through generations by knowledge, story, and craftsmanship.",
+    "about.p2":"Kasivarsi Saami Cultural Center exists not as a museum, but as a living cultural space birthed by Juha Tornensis — a place where traditions breathe, where knowledge is shared, and where the Sámi voice speaks for itself. We stand at Kilpisjärvi, the same wilderness our ancestors stood in for thousands of years.",
+    "about.p3":"Through authentic structures, intimate programs, and a deep respect for Sámi knowledge, we invite you into a world shaped by reindeer, seasons, duodji, and sky.",
+    "quote.text":"\u201cThe land does not belong to us \u2014 we belong to the land. This is something our grandparents knew, and their grandparents before them.\u201d",
+    "quote.cite":"\u2014 Sámi oral tradition, Eanodat region",
+    "gal.label":"Family Archive","gal.heading":"Memories of <em>the North</em>",
+    "gal.body":"These photographs from the family archive span several generations \u2014 reindeer herders, craftswomen, storytellers, and children of the fell. Each image carries a thread of the living tradition we are entrusted to preserve.",
+    "gal.cap1":"Reindeer herder · Eanodat, c. 1960s","gal.cap2":"Duodji craftwork · Traditional joik",
+    "gal.cap3":"The fell in midsummer","gal.cap4":"Seasonal migration · Late autumn","gal.cap5":"Kilpisjärvi · 69°N",
+    "gal.note":"Images from the family archive of the founding family. Each photograph is a window into the living tradition of the Sámi people, capturing moments of daily life, seasonal change, and the enduring relationship with the land that defines our heritage.",
+    "str.label":"The Living Grounds · Available from Autumn 2026",
+    "str.heading":"Authentic <em>Structures</em>","str.avail":"Structures 2\u20135 Ready",
+    "str.note":"<strong>Images are representative only \u2014 main authentic structures to be built.</strong>",
+    "sc2.title":"Korvakota / <em>Goahti</em>","sc2.sub":"Traditional Sámi Dwelling",
+    "sc2.desc":"An authentic turf-and-timber home used by generations of Sámi families. Experience the intimate warmth of a fire at the hearth, surrounded by centuries of living tradition.",
+    "sc3.title":"Laavu","sc3.sub":"Open Wilderness Shelter",
+    "sc3.desc":"Open to the elements and the sky, the laavu is the setting for fire-cooked meals, oral storytelling, and deep encounter with the Arctic landscape in its rawest form.",
+    "sc4.title":"Suonjir","sc4.sub":"Elevated Storage Rack",
+    "sc4.desc":"A traditional raised rack demonstrating the Sámi art of preservation and survival in the subarctic. A testament to ingenuity shaped entirely by the land itself.",
+    "sc5.title":"Big Korvakota","sc5.sub":"Community Gathering Space · Already on Site",
+    "sc5.desc":"Our largest gathering kota already standing at Kilpisjärvi. A spacious space for group programs, cultural events, and community occasions. The heart of the grounds.",
+    "com.label":"Phase 2 · Coming Later","com.heading":"Main Cultural <em>Building</em>",
+    "com.body":"The centerpiece of Kasivarsi Saami Cultural Center \u2014 a purpose-built cultural hub that will deepen every encounter with Sámi heritage, designed according to traditional principles of the North.",
+    "com.f1":"Permanent &amp; temporary Sámi heritage exhibitions",
+    "com.f2":"Reception and cultural documentation center",
+    "com.f3":"Multipurpose hall up to 60 guests",
+    "com.f4":"Dining experiences rooted in Arctic culinary tradition",
+    "com.badge":"Coming in Phase 2",
+    "vis.label":"Come and Experience","vis.heading":"Guided <em>Programs</em>",
+    "vis.body":"An intimate, expert-led encounter with the living heritage of the Sámi people \u2014 their structures, their knowledge systems, and their enduring relationship with the Arctic land.",
+    "vis.type.lbl":"Program Type","vis.type.val":"Guided","vis.type.note":"Led by a Sámi cultural guide",
+    "vis.dur.lbl":"Duration","vis.dur.val":"~1 Hour","vis.dur.note":"Extended programs available",
+    "vis.grp.lbl":"Groups","vis.grp.val":"Min. 10","vis.grp.note":"Contact us for group pricing",
+    "vis.sea.lbl":"Season","vis.sea.val":"Year-Round","vis.sea.note":"Open throughout the year",
+    "here.label":"Getting Here","here.heading":"Your Journey to <em>69°N</em>",
+    "here.body":"We are located in Kilpisjärvi, directly in front of Cahkal Hotels, on road E8. Kilpisjärvi is remote \u2014 and that is precisely what makes it extraordinary. The journey to the far North is part of the experience.",
+    "here.item.airport":"Airport","here.item.bus":"Bus","here.item.transport":"To Rovaniemi",
+    "here.r1.title":"Via Tromsø, Norway",
+    "here.r1.bus":"Bussring \u2014 <a href=\"https://www.bussring.no/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">bussring.no</a>",
+    "here.r1.time":"~ 1.5 hours",
+    "here.r1.note":"Tromsø is in Norway. Please ensure you hold the appropriate visa to enter Finland from here.",
+    "here.r2.title":"Via Kittilä, Finland",
+    "here.r2.bus":"Check connections at <a href=\"https://www.eskelisen.fi/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">eskelisen.fi</a>",
+    "here.r2.time":"~ 2.5 hours",
+    "here.r3.title":"Via Rovaniemi, Finland",
+    "here.r3.transport":"Fly or take the train to Rovaniemi",
+    "here.r3.bus":"Eskelisen Lapin Linjat \u2014 <a href=\"https://www.eskelisen.fi/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">eskelisen.fi</a>",
+    "here.r3.time":"~ 5 hours",
+    "here.road.title":"E8 \u2014 The Only Road",
+    "here.road.body":"Road E8 is the sole route into Kilpisjärvi. In winter, conditions can be demanding. Check road conditions via <a href=\"https://www.fintraffic.fi/en\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">Fintraffic</a> before you travel.",
+    "here.stay.title":"Where to Stay",
+    "here.stay.body":"Cahkal Hotels is located directly in front of the cultural center on the shores of Lake Kilpisjärvi \u2014 an ideal base for experiencing the Arctic North.",
+    "eu.label":"Supported by","eu.r1.title":"EU Rural Funding",
+    "eu.r1.body":"This project has received EU rural funding in support of cultural heritage preservation, sustainable development, and indigenous community programs in the Eanodat region of Northern Finland.",
+    "eu.r2.title":"EU Rural Funding via LEADER",
+    "eu.r2.body":"This project has received EU rural funding from the LEADER programme \u2014 a community-led local development initiative supporting rural areas across Europe. LEADER funding has been instrumental in enabling the early construction and cultural programming of Kasivarsi Saami Cultural Center.",
+    "eu.r3.title":"EU Rural Funding via Elinvoimakeskukselta",
+    "eu.r3.body":"This project has received EU rural funding from Elinvoimakeskukselta (Centre for Economic Development, Transport and the Environment), supporting regional vitality, indigenous cultural infrastructure, and the long-term sustainability of the Kasivarsi Saami Cultural Center.",
+    "con.label":"Plan Your Visit","con.heading":"Get in <em>Touch</em>",
+    "con.body":"For program bookings, group inquiries, or to learn more about the center and our cultural mission, reach out. We welcome schools, cultural organisations, and all who wish to learn.",
+    "form.name":"Name","form.name.ph":"Your name",
+    "form.email":"Email","form.email.ph":"your@email.com",
+    "form.group":"Group Type","form.group.ph":"Select group type\u2026",
+    "form.opt.school":"School / Education","form.opt.cultural":"Cultural Organisation",
+    "form.opt.corporate":"Corporate / Team","form.opt.family":"Family",
+    "form.opt.individual":"Individual","form.opt.other":"Other",
+    "form.size":"Group Size","form.size.ph":"e.g. 12",
+    "form.msg":"Message","form.msg.ph":"Tell us about your group or what brings you here\u2026",
+    "form.submit":"Send Enquiry",
+    "form.success":"\u2726 \u00a0Thank you \u2014 your enquiry has been received. We will be in touch soon.",
+    "form.error":"Something went wrong. Please email us directly at Kasivarsisaamicenter@proton.me",
+    "footer.social":"Follow us · Social media coming soon",
+    "footer.meta":"Kilpisjärvi · Eanodat · 69°N · Co-funded by the European Union"
+  },
+
+  fi: {
+    "nav.heritage":"Perintö","nav.gallery":"Galleria","nav.structures":"Rakenteet",
+    "nav.visit":"Vieraile","nav.here":"Saapuminen","nav.contact":"Yhteystiedot",
+    "hero.eye":"Kilpisjärvi · Suomi · Enontekiö · 69°N",
+    "hero.sub":"Saamelainen perintö · Eanodat-alue",
+    "hero.tag":"Elävä kohtaaminen yhden maailman vanhimmista alkuperäiskulttuureista \u2013 juurtunut Pohjoisen maahan ja muistiin.",
+    "hero.badge":"Avautuu syksy 2026","hero.scroll":"Tutustu",
+    "about.label":"Perintömme",
+    "about.heading":"Kulttuuri, jonka <em>maa ja taivas</em> ovat muokanneet",
+    "about.p1":"Saamen kansa on asunut Eanodat-alueella, suomeksi Enontekiö, tuhansien vuosien ajan. Heidän elämäntapansa, kielensä ja henkinen suhteensa tunturimaisemaan edustavat elävää perinnettä, joka on välitetty sukupolvelta toiselle tiedon, tarinoiden ja käsityötaidon kautta.",
+    "about.p2":"Käsivarsi Saami Cultural Center on luotu elävänä kulttuuritilana Juha Tornensiksen toimesta \u2013 paikka, jossa perinteet hengittävät, tietoa jaetaan ja saamelainen ääni puhuu itse puolestaan. Seisomme Kilpisjärvellä, samassa erämaassa jossa esi-isämme seisoivat tuhansien vuosien ajan.",
+    "about.p3":"Aitojen rakenteiden, intiimien ohjelmien ja syvän kunnioituksen kautta saamelaista tietoa kohtaan kutsumme sinut maailmaan, jota porot, vuodenajat, duodji ja taivas muovaavat.",
+    "quote.text":"\u201eMaa ei kuulu meille \u2013 me kuulumme maalle. Tämän tiesivät isovanhempamme, ja heidän isovanhempansa ennen heitä.\u201c",
+    "quote.cite":"\u2014 Saamelainen suullinen perinne, Eanodat-alue",
+    "gal.label":"Perhearkisto","gal.heading":"Muistoja <em>Pohjoisesta</em>",
+    "gal.body":"Nämä perhearkiston valokuvat kattavat useita sukupolvia \u2013 poronhoitajia, käsityöläisiä, tarinankertojia ja tunturin lapsia. Jokainen kuva kantaa lankaa elävästä perinteestä, jonka säilyttämiseen olemme sitoutuneet.",
+    "gal.cap1":"Poronhoitaja · Eanodat, n. 1960-luku","gal.cap2":"Duodji-käsityö · Perinteinen joiku",
+    "gal.cap3":"Tunturi keskikesällä","gal.cap4":"Kausimuutto · Myöhäissyksy","gal.cap5":"Kilpisjärvi · 69°N",
+    "gal.note":"Kuvat perustajaperheen arkistosta. Jokainen valokuva on ikkuna saamelaisen kansan elävään perinteeseen \u2013 arjen hetkien, vuodenaikojen vaihtelun ja maasuhteen dokumentteja.",
+    "str.label":"Elävät Maastot · Saatavilla syksystä 2026",
+    "str.heading":"Aidot <em>Rakenteet</em>","str.avail":"Rakenteet 2\u20135 valmiina",
+    "str.note":"<strong>Kuvat ovat viitteellisiä \u2013 päärakenteet rakennetaan autenttisina.</strong>",
+    "sc2.title":"Korvakota / <em>Goahti</em>","sc2.sub":"Perinteinen saamelainen asunto",
+    "sc2.desc":"Aito turve-ja-hirsirakenteinen koti, jota saamelaissukupolvet ovat käyttäneet. Koe takan lämmin läheisyys vuosisataisessa elävässä perinteessä.",
+    "sc3.title":"Laavu","sc3.sub":"Avoin erämaakatos",
+    "sc3.desc":"Auki elementeille ja taivaalle, laavu on paikka nuotiolla valmistettaville aterioille, suulliselle tarinalähteeelle ja syvälliselle kohtaamiselle arktisen maiseman kanssa.",
+    "sc4.title":"Suonjir","sc4.sub":"Korotettu varastoteline",
+    "sc4.desc":"Perinteinen korotettu teline havainnollistaa saamelaista säilyttämisen ja selviytymisen taitoa subarktisessa ympäristössä. Todistus kekseliäisyydestä, jonka maa itse on muokannut.",
+    "sc5.title":"Suuri Korvakota","sc5.sub":"Yhteisön kokoontumistila · Jo paikalla",
+    "sc5.desc":"Suurin kokoontumiskotamme seisoo jo Kilpisjärvellä. Tilava paikka ryhmäohjelmille, kulttuuritapahtumille ja yhteisötilaisuuksille. Alueen sydän.",
+    "com.label":"Vaihe 2 · Myöhemmin","com.heading":"Päärakennus <em>Kulttuurikeskus</em>",
+    "com.body":"Käsivarsi Saami Cultural Centerin sydän \u2013 tarkoituksenmukaisesti rakennettu kulttuurikeskus, joka syventää jokaista kohtaamista saamelaisen perinnön kanssa pohjoisperinteen mukaan suunniteltuna.",
+    "com.f1":"Pysyvät ja väliaikaiset saamelaisperintönäyttelyt",
+    "com.f2":"Vastaanotto- ja kulttuuridokumentointikeskus",
+    "com.f3":"Monikäyttöinen sali jopa 60 vieraalle",
+    "com.f4":"Ruokailukokemuksia arktisesta ruokaperinteestä",
+    "com.badge":"Tulossa vaiheessa 2",
+    "vis.label":"Tule ja Koe","vis.heading":"Ohjatut <em>Ohjelmat</em>",
+    "vis.body":"Intiimi, asiantuntijajohtoisuus kohtaaminen saamelaisten elävän perinnön kanssa \u2013 heidän rakenteidensa, tietojärjestelmiensä ja kestävän suhteensa kanssa arktiseen maahan.",
+    "vis.type.lbl":"Ohjelmatyyppi","vis.type.val":"Ohjattu","vis.type.note":"Saamelaisen kulttuurioppaan johdolla",
+    "vis.dur.lbl":"Kesto","vis.dur.val":"~1 tunti","vis.dur.note":"Pidennetyt ohjelmat saatavilla",
+    "vis.grp.lbl":"Ryhmät","vis.grp.val":"Min. 10","vis.grp.note":"Ota yhteyttä ryhmähinnoittelua varten",
+    "vis.sea.lbl":"Sesonki","vis.sea.val":"Ympäri vuoden","vis.sea.note":"Avoinna koko vuoden",
+    "here.label":"Saapuminen","here.heading":"Matkasi <em>69°N:lle</em>",
+    "here.body":"Sijaitsemme Kilpisjärvellä, suoraan Cahkal Hotels -hotellin edessä tiellä E8. Kilpisjärvi on syrjäinen \u2013 ja juuri siksi niin ainutlaatuinen. Pitkä matka pohjoiseen on osa kokemusta.",
+    "here.item.airport":"Lentokenttä","here.item.bus":"Bussi","here.item.transport":"Rovaniemelle",
+    "here.r1.title":"Tromsøn kautta, Norja",
+    "here.r1.bus":"Bussring \u2014 <a href=\"https://www.bussring.no/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">bussring.no</a>",
+    "here.r1.time":"~ 1,5 tuntia",
+    "here.r1.note":"Tromsø sijaitsee Norjassa. Varmistathan, että sinulla on tarvittava viisumi Suomeen saapumiseen.",
+    "here.r2.title":"Kittilän kautta, Suomi",
+    "here.r2.bus":"Tarkista yhteydet: <a href=\"https://www.eskelisen.fi/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">eskelisen.fi</a>",
+    "here.r2.time":"~ 2,5 tuntia",
+    "here.r3.title":"Rovaniemen kautta, Suomi",
+    "here.r3.transport":"Lento tai juna Rovaniemelle",
+    "here.r3.bus":"Eskelisen Lapin Linjat \u2014 <a href=\"https://www.eskelisen.fi/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">eskelisen.fi</a>",
+    "here.r3.time":"~ 5 tuntia",
+    "here.road.title":"E8 \u2013 Ainoa Tie",
+    "here.road.body":"E8 on ainoa maantie Kilpisjärvelle. Talviolosuhteissa tie voi olla haastava. Tarkista tien tila <a href=\"https://www.fintraffic.fi/en\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">Fintraffic</a>-palvelusta ennen lähtöä.",
+    "here.stay.title":"Majoitusvaihtoehdot",
+    "here.stay.body":"Cahkal Hotels sijaitsee suoraan kulttuurikeskuksemme edessä Kilpisjärven rannalla \u2013 ihanteellinen tukikohta Arktisen Pohjoisen kokemiselle.",
+    "eu.label":"Tuettu","eu.r1.title":"EU:n maaseuturahoitus",
+    "eu.r1.body":"Tämä hanke on saanut EU:n maaseuturahoitusta kulttuuriperinnön suojeluun, kestävään kehitykseen ja alkuperäisyhteisöjen ohjelmiin Pohjois-Suomen Eanodat-alueella.",
+    "eu.r2.title":"EU:n maaseuturahoitus LEADER-ohjelman kautta",
+    "eu.r2.body":"Tämä hanke on saanut EU:n maaseuturahoitusta LEADER-ohjelmasta \u2013 yhteisölähtöisestä paikallisen kehittämisen aloitteesta, joka tukee maaseutualueita kaikkialla Euroopassa.",
+    "eu.r3.title":"EU:n maaseuturahoitus Elinvoimakeskuksen kautta",
+    "eu.r3.body":"Tämä hanke on saanut EU:n maaseuturahoitusta Elinvoimakeskukselta, joka tukee alueellista elinvoimaa, alkuperäiskansojen kulttuuriinfrastruktuuria ja Käsivarsi Saami Cultural Centerin pitkäaikaista kestävyyttä.",
+    "con.label":"Suunnittele vierailusi","con.heading":"Ota <em>Yhteyttä</em>",
+    "con.body":"Ohjelmavarauksia, ryhmätiedusteluja tai lisätietoja kulttuurisesta tehtävästämme varten otathan yhteyttä. Tervetuloa kouluille, kulttuurijärjestöille ja kaikille halukkaille.",
+    "form.name":"Nimi","form.name.ph":"Nimesi",
+    "form.email":"Sähköposti","form.email.ph":"sinun@sahkoposti.fi",
+    "form.group":"Ryhmätyyppi","form.group.ph":"Valitse ryhmätyyppi\u2026",
+    "form.opt.school":"Koulu / Koulutus","form.opt.cultural":"Kulttuurijärjestö",
+    "form.opt.corporate":"Yritys / Tiimi","form.opt.family":"Perhe",
+    "form.opt.individual":"Yksittäinen","form.opt.other":"Muu",
+    "form.size":"Ryhmäkoko","form.size.ph":"esim. 12",
+    "form.msg":"Viesti","form.msg.ph":"Kerro ryhmästäsi tai mikä tuo sinut tänne\u2026",
+    "form.submit":"Lähetä tiedustelu",
+    "form.success":"\u2726 \u00a0Kiitos \u2013 tiedustelunne on vastaanotettu. Otamme pian yhteyttä.",
+    "form.error":"Jokin meni pieleen. Lähetä sähköpostia suoraan: Kasivarsisaamicenter@proton.me",
+    "footer.social":"Seuraa meitä · Sosiaalinen media tulossa pian",
+    "footer.meta":"Kilpisjärvi · Eanodat · 69°N · Euroopan unionin osarahoittama"
+  },
+
+  se: {
+    "nav.heritage":"Árbi","nav.gallery":"Gova-čoakkáldat","nav.structures":"Huksehagat",
+    "nav.visit":"Galledeapmi","nav.here":"Boahtit dáppe","nav.contact":"Oktavuohta",
+    "hero.eye":"Gilbbesjávri · Suopma · Eanodat · 69°N",
+    "hero.sub":"Sámi árbi · Eanodat guovlu",
+    "hero.tag":"Ealli deaivvadeapmi máilmmi boaráseamos álgoálbmot kultuvrrainat, vuorrasin Davviguovllu eatnamii ja muitui.",
+    "hero.badge":"Rahpasuvvá čakča 2026","hero.scroll":"Gávdne",
+    "about.label":"Min árbi",
+    "about.heading":"Kultuvra maid <em>eatnan ja albmi</em> leat hábmen",
+    "about.p1":"Sámit leat orron Eanodat guovllus, suomagielas Enontekiö, duhát jagi. Sin eallinvierut, giella ja vuoiŋŋalas oktavuohta duottarlaččamii ovddastit ealli árbevierru, mii lea sirdojuvvon buolvvas bulvii máhtu, muitalumiid ja duodjái bokte.",
+    "about.p2":"Käsivarsi Saami Cultural Center lea huksejuvvon ealli kultuvradilliin Juha Tornensis bokte \u2013 sadji gos árbevierut vuoiŋŋastit, máhttu juogáduvvo ja sámi jiena hállá iešgálgaleapme. Mii seissat Gilbbesjávrris, seamma meahccis gos min máttarváhnemat seisset duhát jagiid áigi.",
+    "about.p3":"Áigenjohtalas huksehagaid, lagaš prográmmaid ja sámi máhtu guovddáš gudnejahttimiid bokte bovdet mii du máilbmái maid boazu, jahkodagat, duodji ja albmi leat hábmen.",
+    "quote.text":"\u201cEatnan ii gula midjiide \u2014 mii gullat eatnamii. Dát lea juoidá maid min vánhenvánhemat dieđe, ja sin vánhenvánhemat sin ovdal.\u201d",
+    "quote.cite":"\u2014 Sámi njálmmálaš árbevierru, Eanodat guovlu",
+    "gal.label":"Bearráigeahčči arkiiva","gal.heading":"Muittut <em>Davviguovllus</em>",
+    "gal.body":"Dát govat bearráigeahčči arkiivvas sisttisdollet máŋga buolva \u2014 boazodoallit, duojárat, muitaleddjiit ja duottar mánát. Juohke govva guodda langa ealli árbevierus maid mii leat sirdojuvvon ráhkistit.",
+    "gal.cap1":"Boazodoalli · Eanodat, č. 1960-logut","gal.cap2":"Duodji · Árbevirolaš juoigan",
+    "gal.cap3":"Duottar geassit","gal.cap4":"Jahkodat johtalus · Čakčamaŋŋelaš","gal.cap5":"Gilbbesjávri · 69°N",
+    "gal.note":"Govvit fas vuođđodádjan bearráigeahčči arkiivvas. Juohke govva lea áigi sámi ealli árbevieruid \u2014 vásihusain idjadanáigi, jahkodagat rievdadeamit ja guhkes oktavuohta eatnamii.",
+    "str.label":"Ealli Eatnamat · Oažžumis čakčas 2026",
+    "str.heading":"Áigenjohtalas <em>Huksehagat</em>","str.avail":"Huksehagat 2\u20135 leat valmiid",
+    "str.note":"<strong>Govvit leat čájehusa dihte \u2014 válddo áigenjohtalas huksehagat huksejuvvojit.</strong>",
+    "sc2.title":"Korvakota / <em>Goahti</em>","sc2.sub":"Árbevirolaš sámi orrosat",
+    "sc2.desc":"Áigenjohtalas suoidnemuoddjás ja muorrás huksejuvvon goahti maid sámi bearrát leat geavahan buolvvat. Vásih tuldda čoalbmegahppit ja jahkásaš árbevieruid vuoiŋŋa.",
+    "sc3.title":"Laavu","sc3.sub":"Rabas meahccesadji",
+    "sc3.desc":"Luonddui ja albmái rabas, laavu lea sadji goikas boradeapmái, muitalusgottiin ja davvi duottara ráfálas deaivvadeapmái.",
+    "sc4.title":"Suonjir","sc4.sub":"Bajit vurken ráigi",
+    "sc4.desc":"Árbevirolaš bajit ráigi čájeha sámi bisshusaid árktalaš birrasis. Máhtolašvuohta maid eatnan iešguhtii lea hábmen.",
+    "sc5.title":"Stuorit Korvakota","sc5.sub":"Siida čoahkkansadji · Dál sadji mielde",
+    "sc5.desc":"Min stuorámus čoahkkankota seisá juo Gilbbesjávrris. Tilavuohtasiida joavkuprográmmaide, kultuvradáhpáhusaide ja siida čoahkkanimiide. Eatnamiid váibmu.",
+    "com.label":"2. Fásen · Boahtte áigge","com.heading":"Válddo Kultuvra <em>Huksen</em>",
+    "com.body":"Käsivarsi Saami Cultural Center guovddáš \u2013 ulbmilat huksejuvvon kultuvragávpi mii čiekŋuda juohke deaivvadeami sámi árbivieru mielde, huksejuvvon davvi árbevieruid vuođđun.",
+    "com.f1":"Bissovaš ja áigodatlaš sámi árbivierru čájáhusat",
+    "com.f2":"Siida- ja kultuvradieđuiguin dokumentašuvdnadovdi",
+    "com.f3":"Máŋggamálošlaš sáli gitta 60 siidamiehttá",
+    "com.f4":"Boradeamivásáhusat árktalaš boradeamiárbevierus",
+    "com.badge":"Boahtá 2. fásenis",
+    "vis.label":"Boađe ja Vásih","vis.heading":"Máhcahuvvon <em>Prográmmat</em>",
+    "vis.body":"Lagaš, speaiallistačoarvvis jođihuvvon deaivvadeapmi sámi ealli árbivieru mielde \u2013 sin huksehagaid, máhttosystema ja guhkes oktavuohta davvi eatnamii.",
+    "vis.type.lbl":"Prográmma tiipa","vis.type.val":"Máhcahuvvon","vis.type.note":"Sámi kultuvraolbmo jođiheami vuolde",
+    "vis.dur.lbl":"Áigi","vis.dur.val":"~1 diibmu","vis.dur.note":"Guhkit prográmmat leat oažžumis",
+    "vis.grp.lbl":"Joavkkut","vis.grp.val":"Min. 10","vis.grp.note":"Váldde min mielde joavkobiilla birra",
+    "vis.sea.lbl":"Áigi","vis.sea.val":"Jahki birra","vis.sea.note":"Rabas jahki birra",
+    "here.label":"Boahtit dáppe","here.heading":"Du mátkki <em>69°N:i</em>",
+    "here.body":"Mii leat Gilbbesjávrris, Cahkal Hotels ovddas, E8 geainnus. Gilbbesjávri lea okkis sadji \u2014 ja dat lea juohit ain áibbas erenomáš. Guhkkilmaš mátkki davvái lea oassi vásáhusas.",
+    "here.item.airport":"Luftgávpot","here.item.bus":"Bussi","here.item.transport":"Roavvenjárgii",
+    "here.r1.title":"Via Tromsø, Norga",
+    "here.r1.bus":"Bussring \u2014 <a href=\"https://www.bussring.no/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">bussring.no</a>",
+    "here.r1.time":"~ 1,5 diibmut",
+    "here.r1.note":"Tromsø lea Norggas. Sáhttá dárbbahit rievttes visa Supmii mannat.",
+    "here.r2.title":"Via Kittilä (Gilbbesjávri), Suopma",
+    "here.r2.bus":"Geahča oktavuođaid: <a href=\"https://www.eskelisen.fi/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">eskelisen.fi</a>",
+    "here.r2.time":"~ 2,5 diibmut",
+    "here.r3.title":"Via Roavvenjárga (Rovaniemi), Suopma",
+    "here.r3.transport":"Vuola dahje johte Roavvenjárgii",
+    "here.r3.bus":"Eskelisen Lapin Linjat \u2014 <a href=\"https://www.eskelisen.fi/\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">eskelisen.fi</a>",
+    "here.r3.time":"~ 5 diibmut",
+    "here.road.title":"E8 \u2014 Áinnas Geaidnu",
+    "here.road.body":"E8 lea áinnas geaidnu Gilbbesjávrrii. Dálvit dilli sáhttá leat heajos \u2013 geahča dili <a href=\"https://www.fintraffic.fi/en\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--ember)\">Fintraffic</a> bokte ovdal mannat.",
+    "here.stay.title":"Gos Orrot",
+    "here.stay.body":"Cahkal Hotels lea riekta kulttuvrasiida ovddas Gilbbesjárves \u2014 ideálalaš vuolggasadji Arktalaš Davveguovllu vásihussii.",
+    "eu.label":"Doarjagis","eu.r1.title":"EU Birrasis Ruhtadeapmi",
+    "eu.r1.body":"Dát prošeakta lea oažžán EU birrasis ruhtadeami kulturárbi suodjaleapmái, nana gárggiideapmái ja álgoálbmot siidaprográmmaid doarjagii Suoma Davviguovllu Eanodat guovllus.",
+    "eu.r2.title":"EU Birrasis Ruhtadeapmi LEADER bokte",
+    "eu.r2.body":"Dát prošeakta lea oažžán EU birrasis ruhtadeami LEADER prográmmas \u2013 siida-jođihuvvon báikkálaš gárggiidanolmmošmekanismmas mii doarju birrasis guovlluid Eurohpás.",
+    "eu.r3.title":"EU Birrasis Ruhtadeapmi Elinvoimakeskukselta bokte",
+    "eu.r3.body":"Dát prošeakta lea oažžán EU birrasis ruhtadeami Elinvoimakeskukselta bokte, guovllu vegiivuohta, álgoálbmot kultuvrainfrastruktuvra ja guhkes bissovaš Käsivarsi Saami Cultural Center doarjagii.",
+    "con.label":"Pláne galledeami","con.heading":"Váldde <em>Oktavuođa</em>",
+    "con.body":"Prográmmaohcamuša, joavkkuohcamuša dahje vel eanet dieđuid birra siidaloktii, váldde min mielde. Mii válddit siidii skuvllaid, kultuvraorganiisašuvnnaid ja vissesoaitnuid geat háliidit oahppat.",
+    "form.name":"Namma","form.name.ph":"Du namma",
+    "form.email":"Elektrovnnalaš poasta","form.email.ph":"du@poasta.fi",
+    "form.group":"Joavkku tiipa","form.group.ph":"Vállje joavkku tiipa\u2026",
+    "form.opt.school":"Skuvla / Oahpahus","form.opt.cultural":"Kultuvraorganiisašuvdna",
+    "form.opt.corporate":"Fierbmesearvvi / Joavku","form.opt.family":"Bearaš",
+    "form.opt.individual":"Okto","form.opt.other":"Eará",
+    "form.size":"Joavkku sturrodat","form.size.ph":"ovd. 12",
+    "form.msg":"Dieđut","form.msg.ph":"Muital min joavkkus dahje maid vuoigŋut dáppe\u2026",
+    "form.submit":"Sádde ohcamuš",
+    "form.success":"\u2726 \u00a0Giitu \u2014 du ohcamuš lea vuostáiváldon. Mii váldit du mielde šat.",
+    "form.error":"Juoidá manai garrasit. Sádde elektrovnnalaš poasta: Kasivarsisaamicenter@proton.me",
+    "footer.social":"Čuovo min · Sosiálalaš mediat bohtet šat",
+    "footer.meta":"Gilbbesjávri · Eanodat · 69°N · Orrugohcci EU:in"
+  }
+};
+
+// ─── LANGUAGE ENGINE ──────────────────────────────────────────────────────────
+function applyLang(lang) {
+  const t = i18n[lang] || i18n.en;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (key in t) {
+      if (el.tagName === 'OPTION') { el.textContent = t[key]; }
+      else { el.innerHTML = t[key]; }
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-placeholder');
+    if (key in t) el.placeholder = t[key];
+  });
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  localStorage.setItem('kscc-lang', lang);
+}
+
+document.querySelectorAll('.lang-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { applyLang(btn.dataset.lang); });
+});
+
+applyLang(localStorage.getItem('kscc-lang') || 'en');
+
+// ─── CONTACT FORM ─────────────────────────────────────────────────────────────
+(function() {
+  var form    = document.getElementById('enquiryForm');
+  var btn     = document.getElementById('submitBtn');
+  var success = document.getElementById('formSuccess');
+  var error   = document.getElementById('formError');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    success.classList.remove('show');
+    error.classList.remove('show');
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    try {
+      var data = new FormData(form);
+      var res = await fetch('/', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: new URLSearchParams(data).toString()
+      });
+      if (res.ok) {
+        success.classList.add('show');
+        form.reset();
+        btn.textContent = 'Sent \u2726';
+        success.scrollIntoView({behavior:'smooth',block:'nearest'});
+      } else { throw new Error('Server error'); }
+    } catch(err) {
+      error.classList.add('show');
+      btn.disabled = false;
+      var lang = localStorage.getItem('kscc-lang') || 'en';
+      btn.textContent = (i18n[lang] || i18n.en)['form.submit'] || 'Send Enquiry';
+    }
+  });
+})();
+</script>
+</body>
+</html>
